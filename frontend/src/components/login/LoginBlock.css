@@ -1,0 +1,12 @@
+.login-block-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../assets/bg3-01.png');
+  padding-bottom: 90px;
+}
+
+.login-block-title {
+  color: white;
+}

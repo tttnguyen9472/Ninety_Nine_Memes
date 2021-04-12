@@ -1,0 +1,15 @@
+.header-button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    background: transparent;
+    cursor: pointer;
+    color: black;
+    font-weight: 700;
+}
+
+.header-button-container:hover {
+    color: white;
+    background: #005e55;
+}
