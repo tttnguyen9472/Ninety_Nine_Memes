@@ -23,10 +23,14 @@ const Form = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if (!password || !userName) {
+    if (!userName) {
       setUserName(userName);
       setPassword(password);
-      return dispatch({ type: 'REGISTER_MISSING_USERNAME_OR_PASSWORD' });
+      return dispatch({ type: 'REGISTER_MISSING_USERNAME' });
+    } else if (!password) {
+      setUserName(userName);
+      setPassword(password);
+      return dispatch({ type: 'REGISTER_MISSING_PASSWORD' });
     } else if (password.length < 8) {
       setUserName(userName);
       setPassword(password);

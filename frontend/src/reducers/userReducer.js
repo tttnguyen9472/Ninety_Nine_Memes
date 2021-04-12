@@ -4,10 +4,15 @@ const initialState = {
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'REGISTER_MISSING_USERNAME_OR_PASSWORD':
+    case 'REGISTER_MISSING_PASSWORD':
       return {
         ...state,
-        errormessageRegister: 'Missing username or password!',
+        errormessageRegister: 'Missing password!',
+      };
+    case 'REGISTER_MISSING_USERNAME':
+      return {
+        ...state,
+        errormessageRegister: 'Missing username!',
       };
     case 'PASSWORD_UNDER_8_CHARACTERS':
       return {
