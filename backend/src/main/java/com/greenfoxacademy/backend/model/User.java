@@ -33,4 +33,13 @@ public class User {
   private List<Meme> meme;
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
   private List<Reaction> reaction;
+
+  public User(String username) {
+    this.username = username;
+  }
+
+  public User(String username,  String password) {
+    this.username = username;
+    this.password = password;
+  }
 }
