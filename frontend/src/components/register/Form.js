@@ -23,7 +23,11 @@ const Form = () => {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if (!userName) {
+    if (!userName && !password) {
+      setUserName(userName);
+      setPassword(password);
+      return dispatch({ type: 'REGISTER_MISSING_PASSWORD_AND_USERNAME' });
+    } else if (!userName) {
       setUserName(userName);
       setPassword(password);
       return dispatch({ type: 'REGISTER_MISSING_USERNAME' });
