@@ -1,8 +1,10 @@
 package com.greenfoxacademy.backend.controller;
 
 import com.greenfoxacademy.backend.exception.UserException;
-import com.greenfoxacademy.backend.model.RegisterRequestDTO;
-import com.greenfoxacademy.backend.model.RegisterResponseDTO;
+import com.greenfoxacademy.backend.model.user.RegisterRequestDTO;
+import com.greenfoxacademy.backend.model.user.RegisterResponseDTO;
+import com.greenfoxacademy.backend.model.user.UserLoginDTO;
+import com.greenfoxacademy.backend.security.AuthenticationRequest;
 import com.greenfoxacademy.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +22,17 @@ public class UserController {
     this.userService = userService;
   }
 
-  @PostMapping("/register")
+  @PostMapping("/user")
   public ResponseEntity<RegisterResponseDTO> registerUser(
       @RequestBody(required = false) RegisterRequestDTO registrationData)
       throws UserException {
     return ResponseEntity.ok(userService.createUser(registrationData));
+  }
+
+  @PostMapping("/login")
+  public ResponseEntity<UserLoginDTO> login(@RequestBody(required = false) AuthenticationRequest loginRequest)
+      throws UserException {
+    return ResponseEntity.ok(userService.loginUser(loginRequest));
   }
 
 }

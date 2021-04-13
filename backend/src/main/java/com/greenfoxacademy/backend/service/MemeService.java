@@ -1,9 +1,9 @@
 package com.greenfoxacademy.backend.service;
 
 import com.greenfoxacademy.backend.exception.MissingParameterException;
-import com.greenfoxacademy.backend.model.RegisterRequestDTO;
 import com.greenfoxacademy.backend.model.meme.Meme;
 import com.greenfoxacademy.backend.model.meme.MemeDTO;
+import com.greenfoxacademy.backend.model.user.User;
 import com.greenfoxacademy.backend.repository.MemeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,7 +23,7 @@ public class MemeService {
     this.memeRepository = memeRepository;
   }
 
-  public MemeDTO postMeme(MemeDTO memeDTO) throws MissingParameterException {
+  public MemeDTO postMeme(User user, MemeDTO memeDTO) throws MissingParameterException {
     if(memeDTO == null) {
       throw new MissingParameterException(Arrays.asList("caption", "url"));
     }
@@ -54,7 +54,7 @@ public class MemeService {
             .collect(Collectors.toList());
   }
 
-  public List<MemeDTO> getAllMemes() {
+  public List<MemeDTO> getAllMemes(User user) {
     return memeToDTO((List<Meme>) memeRepository.findAll());
   }
 }

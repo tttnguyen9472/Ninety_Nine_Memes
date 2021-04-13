@@ -1,4 +1,4 @@
-package com.greenfoxacademy.backend.model;
+package com.greenfoxacademy.backend.model.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.greenfoxacademy.backend.model.meme.Meme;

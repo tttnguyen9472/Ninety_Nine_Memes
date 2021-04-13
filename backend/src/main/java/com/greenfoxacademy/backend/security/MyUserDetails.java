@@ -1,7 +1,7 @@
 package com.greenfoxacademy.backend.security;
 
 
-import com.greenfoxacademy.backend.model.User;
+import com.greenfoxacademy.backend.model.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
