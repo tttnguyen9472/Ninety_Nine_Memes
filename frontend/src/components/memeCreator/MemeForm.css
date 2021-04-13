@@ -1,0 +1,15 @@
+.meme-form-container {
+  height: 50vh;
+}
+
+.meme-form-container img{
+  height: 100%;
+}
+.meme-form-container form input {
+  height: 50px;
+  width: 100px;
+}
+.meme-form-container input:not([type="radio"]) {
+  height:50px;
+  width: 900px;
+}
