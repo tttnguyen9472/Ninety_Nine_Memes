@@ -5,7 +5,7 @@ import OneMeme from './OneMeme';
 
 const Feed = () => {
   const dispatch = useDispatch();
-
+  const memeList = useSelector(state => state.memeReducer.memeList);
   const errormessage = useSelector(state => state.memeReducer.FeedErrormessage);
   const test = [
     {
@@ -23,18 +23,12 @@ const Feed = () => {
       img: 'https://i.imgflip.com/3w0vvy.png',
     },
   ];
-  const [memeList, setMemeList] = useState(test);
 
-  /*useEffect(() => {
+  useEffect(() => {
     Fetch('GET', '/meme')
-      .then(
-        response => (
-          dispatch({ type: 'CLEAR_FEED_ERROR' }),
-          dispatch({ type: 'FILL_MEME_LIST', memeList: test })
-        )
-      )
+      .then(response => {})
       .catch(error => dispatch({ type: 'FEED_ERROR', error: error }));
-  }, [memeList]);*/
+  }, [memeList]);
 
   if (errormessage) {
     return <div>{errormessage}</div>;
