@@ -10,13 +10,17 @@ const MemeForm = () => {
   function handleSubmit(event) {
     event.preventDefault();
 
-    //Feltöltünk egy képet és ennek a linkjét küldjük el
+    //Feltöltjük a képünket egy API-ra
+    //Az API ad egy URL-t
+    //Beírjuk ezt az URL-t a imgData-ban
+    //Amikor megjenítünk valahol valamit, akkor ezt az eltárolt url-t kell beírni a src-be
 
     let body = {
-      caption: 'captionvalue',
-      imgData: 'imgur.com/asdsadas'
+      caption: event.target.caption.value || 'No caption',
+      imgData: 'https//memestorage.api.com/asdsadas'
     }
 
+    console.log(body)
     Fetch('POST', '/login???', body)
       .then(response => {
         setError(response);
@@ -37,7 +41,7 @@ const MemeForm = () => {
         <fieldset>
           <form onSubmit={handleSubmit}>
             <input type="radio" name="rg" id="sign-in" checked />
-            <input className="sign-up sign-in reset" name='username' id='username' type="text" placeholder="Write your caption here!" />
+            <input className="sign-up sign-in reset" name='caption' id='caption' type="text" placeholder="Write your caption here!" />
             <div className="img-and-button">
               <img src={activePhoto}></img>
               <button type="submit"></button>
