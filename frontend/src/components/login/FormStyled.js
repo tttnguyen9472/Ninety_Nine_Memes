@@ -52,7 +52,7 @@ const FormStyled = () => {
 
             <input className="sign-up sign-in reset" name='username' id='username' type="text" placeholder="Username" />
             <input className="sign-up sign-in" name='password' id='password' type="password" placeholder="Password" />
-            <input className="sign-up" type="password" placeholder ="Repeat Password" />
+            <input className="sign-up" name='RePassword' id='RePassword' type="password" placeholder ="Repeat Password" />
             
             <button type="submit"></button>       
 
