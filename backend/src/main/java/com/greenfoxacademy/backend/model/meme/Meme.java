@@ -1,5 +1,7 @@
-package com.greenfoxacademy.backend.model;
+package com.greenfoxacademy.backend.model.meme;
 
+import com.greenfoxacademy.backend.model.Comment;
+import com.greenfoxacademy.backend.model.User;
 import com.greenfoxacademy.backend.model.reaction.Reaction;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,9 +37,17 @@ public class Meme {
   private List<Reaction> reaction;
   @OneToMany(mappedBy = "meme", cascade = CascadeType.ALL)
   private List<Comment> comment;
+  private String url;
 
   public Meme() {
     Date date = new Date();
     this.timestamp = new Timestamp(date.getTime());
+  }
+
+  public Meme(String url, String caption) {
+    Date date = new Date();
+    this.timestamp = new Timestamp(date.getTime());
+    this.url = url;
+    this.caption = caption;
   }
 }

@@ -28,7 +28,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
       throws ServletException, IOException {
 
-    final String authorizationHeader = request.getHeader("Amazonite-tribes-token");
+    final String authorizationHeader = request.getHeader("Ninety-Nine-Gag-Token");
 
     String username = null;
     String jwt = null;
