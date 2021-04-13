@@ -4,9 +4,7 @@ async function Fetch(method, endpoint, body) {
     headers: { 'Content-Type': 'application/json' },
   };
 
-  
-
-  if(localStorage.getItem('token')){
+  if (localStorage.getItem('token')) {
     settings.headers.token = JSON.stringify(
       JSON.parse(atob(localStorage.getItem('token').split('.')[1]))
     );
@@ -16,18 +14,24 @@ async function Fetch(method, endpoint, body) {
     settings.body = JSON.stringify(body);
   }
 
-  const call = await fetch(
-    `${process.env.REACT_APP_PORT}${endpoint}`,
-    settings
-  );
+  let call = null;
+
+  try {
+    call = await fetch(`${process.env.REACT_APP_PORT}${endpoint}`, settings);
+  } catch (err) {
+    throw ('Fetch Error');
+  }
+
+  if (call.status === 404) {
+    throw ('The server is not responding');
+  }
 
   const result = await call.json();
-  if (call.status === 404){
-    throw new Error('The server is not responding');
+
+  if (!call.ok) {
+    throw (result);
   }
-  else if (!call.ok) {
-    throw new Error(result);
-  }
+
   return result;
 }
 
