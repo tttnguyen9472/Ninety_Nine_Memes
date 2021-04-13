@@ -1,6 +1,7 @@
 package com.greenfoxacademy.backend.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.greenfoxacademy.backend.model.meme.Meme;
 import com.greenfoxacademy.backend.model.reaction.Reaction;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
