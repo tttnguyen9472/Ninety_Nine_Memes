@@ -14,7 +14,7 @@ const MemeForm = () => {
 
     let body = {
       caption: 'captionvalue',
-      imgurURL: 'imgur.com/asdsadas'
+      imgData: 'imgur.com/asdsadas'
     }
 
     Fetch('POST', '/login???', body)
