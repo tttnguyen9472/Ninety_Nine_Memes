@@ -14,23 +14,24 @@ async function Fetch(method, endpoint, body) {
     settings.body = JSON.stringify(body);
   }
 
-  const call = null;
+  let call = null;
 
   try {
     call = await fetch(`${process.env.REACT_APP_PORT}${endpoint}`, settings);
   } catch (err) {
+    throw new Error('Fetch Error');
+  }
+
+  if (call.status === 404) {
     throw new Error('The server is not responding');
   }
 
   const result = await call.json();
 
-  console.log(call);
-
-  if (call.status === 404) {
-    throw new Error('The server is not responding');
-  } else if (!call.ok) {
+  if (!call.ok) {
     throw new Error(result);
   }
+
   return result;
 }
 
