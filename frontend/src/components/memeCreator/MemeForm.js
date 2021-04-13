@@ -15,8 +15,10 @@ const MemeForm = () => {
         <form>
             <input type="radio" name="rg" id="sign-in" checked/>
             <input className="sign-up sign-in reset" name='username' id='username' type="text" placeholder="Write your caption here!" />
-            <img src={activePhoto}></img> 
-            <button type="submit"></button>       
+            <div className="img-and-button">
+              <img src={activePhoto}></img> 
+              <button type="submit"></button>
+            </div>       
         </form>
     </fieldset>
       </div>    
