@@ -1,6 +1,8 @@
 const initialState = {
   errormessageRegister: '',
   errormessageLogin: '',
+  username: '',
+  password: ''
 };
 
 const userReducer = (state = initialState, action) => {
@@ -40,6 +42,16 @@ const userReducer = (state = initialState, action) => {
       return {
         ...state,
         errormessageLogin: action.errormessage,
+      };
+      case 'USERNAME_CHANGE':
+      return {
+        ...state,
+        username: action.username,
+      };
+      case '':
+      return {
+        ...state,
+        password: action.password,
       };
     case 'CLEAR_FIELDS':
       return {
