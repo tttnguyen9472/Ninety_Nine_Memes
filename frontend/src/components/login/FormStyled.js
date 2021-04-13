@@ -50,6 +50,7 @@ const FormStyled = () => {
           return history.push('/login');
         })
         .catch(err => {
+          dispatch({type: 'CLEAR_FIELDS'});
           return dispatch({type: 'BACKEND_ERROR', errormessage: err.toString()});
         });
       }
@@ -60,6 +61,7 @@ const FormStyled = () => {
           return history.push('/login');
         })
         .catch(err => {
+          dispatch({type: 'CLEAR_FIELDS'});
           return dispatch({type: 'BACKEND_ERROR', errormessage: err.toString()});
         });
       }
@@ -79,8 +81,8 @@ const FormStyled = () => {
             <label htmlFor="sign-in">Login</label>
             <label htmlFor="sign-up">Register</label> 
 
-            <input className="sign-up sign-in reset" name='username' id='username' type="text" onChange={handleUsernameChange} placeholder="Username" />
-            <input className="sign-up sign-in" name='password' id='password' type="password" onChange={handlePasswordChange} placeholder="Password" />
+            <input className="sign-up sign-in reset" name='username' id='username' type="text" onChange={handleUsernameChange} placeholder="Username" value={userName} />
+            <input className="sign-up sign-in" name='password' id='password' type="password" onChange={handlePasswordChange} placeholder="Password" value={password} />
             
             {submitType && <button type="submit"></button>}       
 
