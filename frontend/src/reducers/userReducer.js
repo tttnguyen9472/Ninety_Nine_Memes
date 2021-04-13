@@ -1,34 +1,45 @@
 const initialState = {
-  errormessageRegister: '',
-  errormessageLogin: ''
+  errormessage: '',
+  username: '',
+  password: ''
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'REGISTER_MISSING_PASSWORD_AND_USERNAME':
+    case 'CHANGE_USERNAME':
       return {
         ...state,
-        errormessageRegister: 'Missing password and username!',
+        username: action.username,
       };
-    case 'REGISTER_MISSING_PASSWORD':
+      case 'CHANGE_PASSWORD':
       return {
         ...state,
-        errormessageRegister: 'Missing password!',
+        password: action.password,
       };
-    case 'REGISTER_MISSING_USERNAME':
+    case 'MISSING_PASSWORD_AND_USERNAME':
       return {
         ...state,
-        errormessageRegister: 'Missing username!',
+        errormessage: 'Missing password and username!',
+      };
+    case 'MISSING_PASSWORD':
+      return {
+        ...state,
+        errormessage: 'Missing password!',
+      };
+    case 'MISSING_USERNAME':
+      return {
+        ...state,
+        errormessage: 'Missing username!',
       };
     case 'PASSWORD_UNDER_8_CHARACTERS':
       return {
         ...state,
-        errormessageRegister: 'Password must be at least 8 characters!',
+        errormessage: 'Password must be at least 8 characters!',
       };
-    case 'REGISTER_ERROR':
+    case 'BACKEND_ERROR':
       return {
         ...state,
-        errormessageRegister: action.errormessage,
+        errormessage: action.errormessage,
       };
 
     case 'LOGIN_MISSING_USERNAME_OR_PASSWORD':
@@ -44,8 +55,9 @@ const userReducer = (state = initialState, action) => {
     case 'CLEAR_FIELDS':
       return {
         ...state,
-        errormessageLogin: '',
-        errormessageRegister: '',
+        errormessage: '',
+        username: '',
+        password: ''
       };
     default:
       return state;

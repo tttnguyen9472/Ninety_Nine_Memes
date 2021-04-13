@@ -9,68 +9,80 @@ const FormStyled = () => {
 
   let history = useHistory();
   const dispatch = useDispatch();
-  const errormessage = useSelector(state => state.userReducer.errormessageLogin);
-  const [userName, setUserName] = useState('');
-  const [password, setPassword] = useState('');
+  const errormessage = useSelector(state => state.userReducer.errormessage);
+  const userName = useSelector(state => state.userReducer.username);
+  const password = useSelector(state => state.userReducer.password);
   const [submitType, setSubmitType] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleUsernameChange(event) {
+    dispatch({type: 'CHANGE_USERNAME', username: event.target.value.trim()});
+  }
+
+  function handlePasswordChange(event) {
+    dispatch({type: 'CHANGE_PASSWORD', password: event.target.value.trim()});
+  }
 
   function handleSubmit(event) {
     event.preventDefault();
-    setUserName(event.target.username.value);
-    setPassword(event.target.password.value);
-    if(event.target.rg[0].value === 'on'){
-      setSubmitType('login');
+
+    if (userName === '' && password === '') {
+      return dispatch({ type: 'MISSING_PASSWORD_AND_USERNAME' });
+    } else if (userName === '') {
+      return dispatch({ type: 'MISSING_USERNAME' });
+    } else if (password === '') {
+      return dispatch({ type: 'MISSING_PASSWORD' });
+    } else if (password.length < 8) {
+      return dispatch({ type: 'PASSWORD_UNDER_8_CHARACTERS' });
     }
-    else{
-      setSubmitType('register');
-    }
-    if (password === '' || userName === '') {
-      console.log(password, userName)
-    }
-    console.log(password, userName);
+
+    setSubmitted(true);
   }
 
   useEffect(() => {
       let body = { username: userName, password: password };
+
       if(submitType === 'login'){
         Fetch('POST', '/login', body)
         .then(response => {
           localStorage.setItem('token', response.token);
-          history.push('/login');
-          return dispatch({type: 'CLEAR_FIELDS'});
+          dispatch({type: 'CLEAR_FIELDS'});
+          return history.push('/login');
         })
         .catch(err => {
-          return dispatch({type: 'LOGIN_BACKEND_ERROR', errormessage: err.toString()});
+          return dispatch({type: 'BACKEND_ERROR', errormessage: err.toString()});
         });
       }
       else if (submitType === 'register'){
         Fetch('POST', '/register', body)
         .then(response => {
-          history.push('/login');
-          return dispatch({type: 'CLEAR_FIELDS'});
+          dispatch({type: 'CLEAR_FIELDS'});
+          return history.push('/login');
         })
         .catch(err => {
-          return dispatch({type: 'REGISTER_ERROR', errormessage: err.toString()});
+          return dispatch({type: 'BACKEND_ERROR', errormessage: err.toString()});
         });
       }
+
+      setSubmitType(false);
       
-  }, [submitType]);
+  }, [submitted === true]);
 
   return (
     <div className="login-form-container">
       <div className="flex-wrap">
     <fieldset>
         <form autoComplete="off" onSubmit={handleSubmit}>
-            <input type="radio" name="rg" id="sign-in" checked/>
-            <input type="radio" name="rg" id="sign-up" />      
+            <input type="radio" name="rg" id="sign-in" onChange={() => {setSubmitType('login'); dispatch({type: 'CLEAR_FIELDS'})}} checked={submitType === 'login'} />
+            <input type="radio" name="rg" id="sign-up" onChange={() => {setSubmitType('register'); dispatch({type: 'CLEAR_FIELDS'});}} checked={submitType === 'register'}/>      
 
             <label htmlFor="sign-in">Login</label>
             <label htmlFor="sign-up">Register</label> 
 
-            <input className="sign-up sign-in reset" name='username' id='username' type="text" placeholder="Username" />
-            <input className="sign-up sign-in" name='password' id='password' type="password" placeholder="Password" />
+            <input className="sign-up sign-in reset" name='username' id='username' type="text" onChange={handleUsernameChange} placeholder="Username" />
+            <input className="sign-up sign-in" name='password' id='password' type="password" onChange={handlePasswordChange} placeholder="Password" />
             
-            <button type="submit"></button>       
+            {submitType && <button type="submit"></button>}       
 
             <p>{errormessage && <span className="login-errormessage">{errormessage}</span>}</p>
         </form>
