@@ -3,7 +3,7 @@ package com.greenfoxacademy.backend.exception.handler;
 
 import com.greenfoxacademy.backend.exception.MissingParameterException;
 import com.greenfoxacademy.backend.exception.ReservedUsernameException;
-import com.greenfoxacademy.backend.model.RegisterResponseDTO;
+import com.greenfoxacademy.backend.model.user.RegisterResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

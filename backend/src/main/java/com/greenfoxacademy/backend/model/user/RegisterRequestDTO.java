@@ -1,4 +1,4 @@
-package com.greenfoxacademy.backend.model;
+package com.greenfoxacademy.backend.model.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

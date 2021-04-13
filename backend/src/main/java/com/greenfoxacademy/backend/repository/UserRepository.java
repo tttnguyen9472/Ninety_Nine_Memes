@@ -1,6 +1,6 @@
 package com.greenfoxacademy.backend.repository;
 
-import com.greenfoxacademy.backend.model.User;
+import com.greenfoxacademy.backend.model.user.User;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 

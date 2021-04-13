@@ -1,7 +1,7 @@
 package com.greenfoxacademy.backend.model.meme;
 
 import com.greenfoxacademy.backend.model.Comment;
-import com.greenfoxacademy.backend.model.User;
+import com.greenfoxacademy.backend.model.user.User;
 import com.greenfoxacademy.backend.model.reaction.Reaction;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -1,6 +1,7 @@
 package com.greenfoxacademy.backend.model;
 
 import com.greenfoxacademy.backend.model.meme.Meme;
+import com.greenfoxacademy.backend.model.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;

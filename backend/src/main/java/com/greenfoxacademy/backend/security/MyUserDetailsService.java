@@ -1,7 +1,7 @@
 package com.greenfoxacademy.backend.security;
 
 
-import com.greenfoxacademy.backend.model.User;
+import com.greenfoxacademy.backend.model.user.User;
 import com.greenfoxacademy.backend.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
