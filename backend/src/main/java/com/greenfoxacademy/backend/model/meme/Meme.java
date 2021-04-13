@@ -1,6 +1,6 @@
 package com.greenfoxacademy.backend.model.meme;
 
-import com.greenfoxacademy.backend.model.Comment;
+import com.greenfoxacademy.backend.model.comment.Comment;
 import com.greenfoxacademy.backend.model.user.User;
 import com.greenfoxacademy.backend.model.reaction.Reaction;
 import lombok.AllArgsConstructor;
@@ -44,10 +44,11 @@ public class Meme {
     this.timestamp = new Timestamp(date.getTime());
   }
 
-  public Meme(String url, String caption) {
+  public Meme(String url, String caption, User user) {
     Date date = new Date();
     this.timestamp = new Timestamp(date.getTime());
     this.url = url;
     this.caption = caption;
+    this.user =user;
   }
 }

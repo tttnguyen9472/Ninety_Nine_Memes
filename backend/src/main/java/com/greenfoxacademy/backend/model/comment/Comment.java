@@ -1,4 +1,4 @@
-package com.greenfoxacademy.backend.model;
+package com.greenfoxacademy.backend.model.comment;
 
 import com.greenfoxacademy.backend.model.meme.Meme;
 import com.greenfoxacademy.backend.model.user.User;
@@ -31,9 +31,18 @@ public class Comment {
   @JoinColumn(name = "meme_id")
   private Meme meme;
   private Timestamp timestamp;
+  private String comment;
 
   public Comment() {
     Date date = new Date();
     this.timestamp = new Timestamp(date.getTime());
+  }
+
+  public Comment(String comment, User user, Meme meme) {
+    Date date = new Date();
+    this.timestamp = new Timestamp(date.getTime());
+    this.comment = comment;
+    this.user = user;
+    this.meme=meme;
   }
 }
