@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import './FormStyled.css';
 import Fetch from '../fetch/Fetch';
 import { useHistory } from 'react-router-dom';
-//import InputField from "./InputField";
 import {useDispatch, useSelector} from "react-redux";
 
 const FormStyled = () => {
@@ -67,29 +66,29 @@ const FormStyled = () => {
       }
 
       setSubmitType(false);
-      
+
   }, [submitted === true]);
 
   return (
     <div className="login-form-container">
       <div className="flex-wrap">
-    <fieldset>
-        <form autoComplete="off" onSubmit={handleSubmit}>
-            <input type="radio" name="rg" id="sign-in" onChange={() => {setSubmitType('login'); dispatch({type: 'CLEAR_FIELDS'})}} checked={submitType === 'login'} />
-            <input type="radio" name="rg" id="sign-up" onChange={() => {setSubmitType('register'); dispatch({type: 'CLEAR_FIELDS'});}} checked={submitType === 'register'}/>      
+        <fieldset>
+          <form autoComplete="off" onSubmit={handleSubmit}>
+             <input type="radio" name="rg" id="sign-in" onChange={() => {setSubmitType('login'); dispatch({type: 'CLEAR_FIELDS'})}} checked={submitType === 'login'} />
+             <input type="radio" name="rg" id="sign-up" onChange={() => {setSubmitType('register'); dispatch({type: 'CLEAR_FIELDS'});}} checked={submitType === 'register'}/>      
 
-            <label htmlFor="sign-in">Login</label>
-            <label htmlFor="sign-up">Register</label> 
+             <label htmlFor="sign-in">Login</label>
+             <label htmlFor="sign-up">Register</label> 
 
-            <input className="sign-up sign-in reset" name='username' id='username' type="text" onChange={handleUsernameChange} placeholder="Username" value={userName} />
-            <input className="sign-up sign-in" name='password' id='password' type="password" onChange={handlePasswordChange} placeholder="Password" value={password} />
+             <input className="sign-up sign-in reset" name='username' id='username' type="text" onChange={handleUsernameChange} placeholder="Username" value={userName} />
+             <input className="sign-up sign-in" name='password' id='password' type="password" onChange={handlePasswordChange} placeholder="Password" value={password} />
             
-            {submitType && <button type="submit"></button>}       
+             {submitType && <button type="submit"></button>}       
 
-            <p>{errormessage && <span className="login-errormessage">{errormessage}</span>}</p>
-        </form>
-    </fieldset>
-</div>
+             <p>{errormessage && <span className="login-errormessage">{errormessage}</span>}</p>
+          </form>
+        </fieldset>
+      </div>
     </div>
   );
 };

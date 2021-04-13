@@ -1,14 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Login from './components/login/FormStyled'
 import store from './store/store';
 import { Provider } from 'react-redux';
 
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+      <Login />
     </React.StrictMode>
   </Provider>,
   document.getElementById('root')
