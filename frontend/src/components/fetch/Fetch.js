@@ -4,9 +4,13 @@ async function Fetch(method, endpoint, body) {
     headers: { 'Content-Type': 'application/json' },
   };
 
-  settings.headers.token = JSON.stringify(
-    JSON.parse(atob(localStorage.getItem('token').split('.')[1]))
-  );
+  
+
+  if(localStorage.getItem('token')){
+    settings.headers.token = JSON.stringify(
+      JSON.parse(atob(localStorage.getItem('token').split('.')[1]))
+    );
+  }
 
   if (body) {
     settings.body = JSON.stringify(body);

@@ -12,7 +12,7 @@ const FormStyled = () => {
   const errormessage = useSelector(state => state.userReducer.errormessageLogin);
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
-
+  const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -22,6 +22,7 @@ const FormStyled = () => {
       console.log(password, userName)
     }
     console.log(password, userName);
+    setSubmitted(true);
   }
 
   useEffect(() => {
@@ -37,7 +38,8 @@ const FormStyled = () => {
         .catch(err => {
           return dispatch({type: 'LOGIN_BACKEND_ERROR', errormessage: err.toString()});
         });
-  }, []);
+      setSubmitted(false);
+  }, [submitted]);
 
   return (
     <div className="login-form-container">
