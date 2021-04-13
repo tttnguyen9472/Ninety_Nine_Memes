@@ -10,8 +10,8 @@ const FormStyled = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const errormessage = useSelector(state => state.userReducer.errormessageLogin);
-  const userName = useSelector(state => state.userReducer.username);
-  const password = useSelector(state => state.userReducer.password);
+  const [userName, setUserName] = useState('');
+  const [password, setPassword] = useState('');
 
    let usernameEvent = '';
    let passwordEvent = '';
@@ -19,11 +19,12 @@ const FormStyled = () => {
   function handleUsernameChange(event) {
     usernameEvent = event.target.value;
     console.log(usernameEvent);
-    return dispatch({type: 'USERNAME_CHANGE', username: usernameEvent});
+    setUserName(usernameEvent);
   }
 
   function handlePasswordChange(event) {
     passwordEvent= event.target.value;
+    setPassword(passwordEvent);
   }
 
   function handleSubmit(event) {
@@ -31,7 +32,6 @@ const FormStyled = () => {
     console.log(userName, usernameEvent);
     if (password === '' || userName === '') {
       console.log(password, userName)
-      return dispatch({type: 'LOGIN_MISSING_USERNAME_OR_PASSWORD'});
     } 
   }
 
