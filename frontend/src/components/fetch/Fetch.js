@@ -19,17 +19,17 @@ async function Fetch(method, endpoint, body) {
   try {
     call = await fetch(`${process.env.REACT_APP_PORT}${endpoint}`, settings);
   } catch (err) {
-    throw new Error('Fetch Error');
+    throw 'Fetch Error';
   }
 
   if (call.status === 404) {
-    throw new Error('The server is not responding');
+    throw 'The server is not responding';
   }
 
   const result = await call.json();
 
   if (!call.ok) {
-    throw new Error(result);
+    throw result;
   }
 
   return result;
