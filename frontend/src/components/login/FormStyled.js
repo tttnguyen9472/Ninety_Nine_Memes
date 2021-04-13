@@ -12,34 +12,49 @@ const FormStyled = () => {
   const errormessage = useSelector(state => state.userReducer.errormessageLogin);
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
-  const [submitted, setSubmitted] = useState(false);
+  const [submitType, setSubmitType] = useState(null);
 
   function handleSubmit(event) {
     event.preventDefault();
     setUserName(event.target.username.value);
     setPassword(event.target.password.value);
+    if(event.target.rg[0].value === 'on'){
+      setSubmitType('login');
+    }
+    else{
+      setSubmitType('register');
+    }
     if (password === '' || userName === '') {
       console.log(password, userName)
     }
     console.log(password, userName);
-    setSubmitted(true);
   }
 
   useEffect(() => {
       let body = { username: userName, password: password };
-      //IDE KELL EGY NORMÁLIS ENDPOINT
-      Fetch('POST', '/login??????', body)
+      if(submitType === 'login'){
+        Fetch('POST', '/login', body)
         .then(response => {
           localStorage.setItem('token', response.token);
-          //FŐ OLDAL ÁTIRÁNYÍTÁSA
           history.push('/login');
           return dispatch({type: 'CLEAR_FIELDS'});
         })
         .catch(err => {
           return dispatch({type: 'LOGIN_BACKEND_ERROR', errormessage: err.toString()});
         });
-      setSubmitted(false);
-  }, [submitted]);
+      }
+      else if (submitType === 'register'){
+        Fetch('POST', '/register', body)
+        .then(response => {
+          history.push('/login');
+          return dispatch({type: 'CLEAR_FIELDS'});
+        })
+        .catch(err => {
+          return dispatch({type: 'REGISTER_ERROR', errormessage: err.toString()});
+        });
+      }
+      
+  }, [submitType]);
 
   return (
     <div className="login-form-container">
@@ -54,7 +69,6 @@ const FormStyled = () => {
 
             <input className="sign-up sign-in reset" name='username' id='username' type="text" placeholder="Username" />
             <input className="sign-up sign-in" name='password' id='password' type="password" placeholder="Password" />
-            <input className="sign-up" name='RePassword' id='RePassword' type="password" placeholder ="Repeat Password" />
             
             <button type="submit"></button>       
 

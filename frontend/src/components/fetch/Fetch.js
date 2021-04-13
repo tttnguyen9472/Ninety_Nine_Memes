@@ -22,8 +22,10 @@ async function Fetch(method, endpoint, body) {
   );
 
   const result = await call.json();
-
-  if (call.status !== 200) {
+  if (call.status === 404){
+    throw new Error('The server is not responding');
+  }
+  else if (!call.ok) {
     throw new Error(result);
   }
   return result;
