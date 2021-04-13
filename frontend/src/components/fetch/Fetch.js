@@ -4,9 +4,13 @@ async function Fetch(method, endpoint, body) {
     headers: { 'Content-Type': 'application/json' },
   };
 
-  settings.headers.token = JSON.stringify(
-    JSON.parse(atob(localStorage.getItem('token').split('.')[1]))
-  );
+  
+
+  if(localStorage.getItem('token')){
+    settings.headers.token = JSON.stringify(
+      JSON.parse(atob(localStorage.getItem('token').split('.')[1]))
+    );
+  }
 
   if (body) {
     settings.body = JSON.stringify(body);
@@ -18,8 +22,10 @@ async function Fetch(method, endpoint, body) {
   );
 
   const result = await call.json();
-
-  if (call.status !== 200) {
+  if (call.status === 404){
+    throw new Error('The server is not responding');
+  }
+  else if (!call.ok) {
     throw new Error(result);
   }
   return result;
