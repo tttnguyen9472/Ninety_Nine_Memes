@@ -13,26 +13,15 @@ const FormStyled = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
 
-   let usernameEvent = '';
-   let passwordEvent = '';
-
-  function handleUsernameChange(event) {
-    usernameEvent = event.target.value;
-    console.log(usernameEvent);
-    setUserName(usernameEvent);
-  }
-
-  function handlePasswordChange(event) {
-    passwordEvent= event.target.value;
-    setPassword(passwordEvent);
-  }
 
   function handleSubmit(event) {
     event.preventDefault();
-    console.log(userName, usernameEvent);
+    setUserName(event.target.username.value);
+    setPassword(event.target.password.value);
     if (password === '' || userName === '') {
       console.log(password, userName)
-    } 
+    }
+    console.log(password, userName);
   }
 
   useEffect(() => {
@@ -61,8 +50,8 @@ const FormStyled = () => {
             <label htmlFor="sign-in">Login</label>
             <label htmlFor="sign-up">Register</label> 
 
-            <input className="sign-up sign-in reset" type="text" placeholder="Username" onChange={handleUsernameChange}/>
-            <input className="sign-up sign-in" type="password" placeholder ="Password" />
+            <input className="sign-up sign-in reset" name='username' id='username' type="text" placeholder="Username" />
+            <input className="sign-up sign-in" name='password' id='password' type="password" placeholder="Password" />
             <input className="sign-up" type="password" placeholder ="Repeat Password" />
             
             <button type="submit"></button>       
