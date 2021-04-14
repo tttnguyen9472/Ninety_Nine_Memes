@@ -1,8 +1,9 @@
 package com.greenfoxacademy.backend.service;
 
-import com.greenfoxacademy.backend.exception.InvalidMemeIdException;
-import com.greenfoxacademy.backend.exception.MissingParameterException;
-import com.greenfoxacademy.backend.exception.NoSuchReactionException;
+import com.greenfoxacademy.backend.exception.memeException.InvalidMemeIdException;
+import com.greenfoxacademy.backend.exception.reactionException.InvalidReactionValueException;
+import com.greenfoxacademy.backend.exception.memeException.MissingParameterException;
+import com.greenfoxacademy.backend.exception.reactionException.NoSuchReactionException;
 import com.greenfoxacademy.backend.model.comment.Comment;
 import com.greenfoxacademy.backend.model.comment.CommentResponseDTO;
 import com.greenfoxacademy.backend.model.meme.Meme;
@@ -91,7 +92,11 @@ public class MemeService {
         .collect(Collectors.toList());
   }
 
-  public void postReaction(User user, String reaction, Long id, Integer value) throws InvalidMemeIdException, NoSuchReactionException {
+  public void postReaction(User user, String reaction, Long id, Integer value)
+      throws InvalidMemeIdException, NoSuchReactionException, InvalidReactionValueException {
+    if (value<0 || value>10){
+      throw new InvalidReactionValueException();
+    }
     Meme actualMeme = findMemeById(id);
     actualMeme.setMetaData(reactionService.increaseReaction(actualMeme.getMetaData(), reaction, value));
     memeRepository.save(actualMeme);

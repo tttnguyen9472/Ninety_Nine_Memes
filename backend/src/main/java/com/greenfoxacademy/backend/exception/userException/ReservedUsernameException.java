@@ -1,4 +1,4 @@
-package com.greenfoxacademy.backend.exception;
+package com.greenfoxacademy.backend.exception.userException;
 
 public class ReservedUsernameException extends UserException {
   private String requestedName;

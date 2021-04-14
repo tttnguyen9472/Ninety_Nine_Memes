@@ -11,8 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class MemeDTO {
 
-
-//    Array[ meme object: { memeId, timestamp, metada[funny, cringe, horny stb.] array[comments], img } ]
     private String caption;
     private String url;
 

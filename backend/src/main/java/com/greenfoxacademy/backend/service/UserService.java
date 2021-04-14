@@ -1,9 +1,9 @@
 package com.greenfoxacademy.backend.service;
 
-import com.greenfoxacademy.backend.exception.MissingParameterException;
-import com.greenfoxacademy.backend.exception.NoSuchUserException;
-import com.greenfoxacademy.backend.exception.ReservedUsernameException;
-import com.greenfoxacademy.backend.exception.UserException;
+import com.greenfoxacademy.backend.exception.memeException.MissingParameterException;
+import com.greenfoxacademy.backend.exception.userException.NoSuchUserException;
+import com.greenfoxacademy.backend.exception.userException.ReservedUsernameException;
+import com.greenfoxacademy.backend.exception.userException.UserException;
 import com.greenfoxacademy.backend.model.user.RegisterRequestDTO;
 import com.greenfoxacademy.backend.model.user.RegisterResponseDTO;
 import com.greenfoxacademy.backend.model.user.User;

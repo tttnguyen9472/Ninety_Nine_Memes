@@ -1,4 +1,6 @@
-package com.greenfoxacademy.backend.exception;
+package com.greenfoxacademy.backend.exception.memeException;
+
+import com.greenfoxacademy.backend.exception.userException.UserException;
 
 import java.util.List;
 
