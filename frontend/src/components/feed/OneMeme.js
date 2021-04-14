@@ -6,6 +6,9 @@ function OneMeme(meme) {
   return (
     <div id={meme.id}>
       <img src={meme.img}></img>
+      <br></br>
+      <label>{meme.caption}</label>
+      <br></br>
       <label onClick={Reaction(meme, 'funny')}>
         Funny: {meme.metadata.funny}
       </label>

@@ -2,6 +2,7 @@ const initialState = {
   memeList: [
     {
       id: 1,
+      caption: 'Nem tudom',
       timestamp: 1618319065,
       metadata: { funny: 5, cringe: 0, horny: 1 },
       comments: ['WTF?', 'YEY'],
@@ -10,6 +11,7 @@ const initialState = {
     {
       id: 2,
       timestamp: 1618318065,
+      caption: 'Még most se tudom',
       metadata: { funny: 3, cringe: 4, horny: 2 },
       comments: ['?????', 'PISTI KÉSZ AZ EBÉD'],
       img: 'https://i.imgflip.com/3w0vvy.png',
