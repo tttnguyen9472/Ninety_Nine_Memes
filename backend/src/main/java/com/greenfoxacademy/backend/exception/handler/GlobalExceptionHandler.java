@@ -3,8 +3,10 @@ package com.greenfoxacademy.backend.exception.handler;
 
 import com.greenfoxacademy.backend.exception.InvalidMemeIdException;
 import com.greenfoxacademy.backend.exception.MissingParameterException;
+import com.greenfoxacademy.backend.exception.NoSuchReactionException;
 import com.greenfoxacademy.backend.exception.ReservedUsernameException;
 import com.greenfoxacademy.backend.model.meme.MemeErrorDTO;
+import com.greenfoxacademy.backend.model.reaction.ReactionErrorDTO;
 import com.greenfoxacademy.backend.model.user.RegisterResponseDTO;
 import com.greenfoxacademy.backend.model.user.UserLoginDTO;
 import org.springframework.http.HttpStatus;
@@ -42,6 +44,12 @@ public class GlobalExceptionHandler {
   @ExceptionHandler(InvalidMemeIdException.class)
   public ResponseEntity<MemeErrorDTO> invalidMemeIdExceptionHandling(InvalidMemeIdException ex) {
         return new ResponseEntity<>(new MemeErrorDTO("The specified Meme ID is invalid."),
+        HttpStatus.BAD_REQUEST);
+  }
+
+  @ExceptionHandler(NoSuchReactionException.class)
+  public ResponseEntity<ReactionErrorDTO> noSuchReactionExceptionHandling(NoSuchReactionException ex) {
+    return new ResponseEntity<>(new ReactionErrorDTO("You can't react like that bro."),
         HttpStatus.BAD_REQUEST);
   }
 

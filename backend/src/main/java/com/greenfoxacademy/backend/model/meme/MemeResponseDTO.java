@@ -1,7 +1,7 @@
 package com.greenfoxacademy.backend.model.meme;
 
-import com.greenfoxacademy.backend.model.comment.CommentDTO;
-import com.greenfoxacademy.backend.model.reaction.Reaction;
+import com.greenfoxacademy.backend.model.comment.CommentResponseDTO;
+import com.greenfoxacademy.backend.model.reaction.ReactionResponseDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,7 @@ public class MemeResponseDTO {
   private Long id;
   private Timestamp timestamp;
   //TODO ReactionDTO
-  private List<Reaction> reaction;
-  private List<CommentDTO> comment;
+  private List<ReactionResponseDTO> metaData;
+  private List<CommentResponseDTO> comment;
   private String url;
 }

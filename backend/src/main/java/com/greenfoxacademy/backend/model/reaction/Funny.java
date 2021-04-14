@@ -14,6 +14,10 @@ public class Funny extends Reaction {
     super();
   }
 
+  public Funny(Integer value) {
+    super(value);
+  }
+
   @Override
   public String getType() {
     return "Funny";

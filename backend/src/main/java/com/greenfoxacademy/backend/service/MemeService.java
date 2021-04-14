@@ -2,11 +2,14 @@ package com.greenfoxacademy.backend.service;
 
 import com.greenfoxacademy.backend.exception.InvalidMemeIdException;
 import com.greenfoxacademy.backend.exception.MissingParameterException;
+import com.greenfoxacademy.backend.exception.NoSuchReactionException;
 import com.greenfoxacademy.backend.model.comment.Comment;
-import com.greenfoxacademy.backend.model.comment.CommentDTO;
+import com.greenfoxacademy.backend.model.comment.CommentResponseDTO;
 import com.greenfoxacademy.backend.model.meme.Meme;
 import com.greenfoxacademy.backend.model.meme.MemeDTO;
 import com.greenfoxacademy.backend.model.meme.MemeResponseDTO;
+import com.greenfoxacademy.backend.model.reaction.Reaction;
+import com.greenfoxacademy.backend.model.reaction.ReactionResponseDTO;
 import com.greenfoxacademy.backend.model.user.User;
 import com.greenfoxacademy.backend.repository.MemeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,10 +24,12 @@ import java.util.stream.Collectors;
 public class MemeService {
 
   private MemeRepository memeRepository;
+  private ReactionService reactionService;
 
   @Autowired
-  public MemeService(MemeRepository memeRepository) {
+  public MemeService(MemeRepository memeRepository, ReactionService reactionService) {
     this.memeRepository = memeRepository;
+    this.reactionService = reactionService;
   }
 
   public MemeDTO postMeme(User user, MemeDTO memeDTO) throws MissingParameterException {
@@ -33,9 +38,9 @@ public class MemeService {
     }
     checkForMissingMemeParameters(memeDTO);
     Meme newMeme = new Meme(memeDTO.getUrl(), memeDTO.getCaption(), user);
+    reactionService.addReactionToNewMeme(newMeme);
     memeRepository.save(newMeme);
-    return new MemeDTO(newMeme.getUrl(), newMeme.getCaption());
-   // return new MemeResponseDTO(newMeme.getId(),newMeme.getTimestamp(),newMeme.getReaction(),commentToDTO(newMeme.getComment()),newMeme.getUrl());
+    return new MemeDTO(newMeme.getCaption(), newMeme.getUrl());
   }
 
   private void checkForMissingMemeParameters(MemeDTO memeDTO) throws MissingParameterException {
@@ -55,27 +60,16 @@ public class MemeService {
     }
   }
 
-//  public List<MemeDTO> memeToDTO(List<Meme> memeList) {
-//    return memeList.stream()
-//        .map(m -> new MemeDTO(m.getCaption(), m.getUrl(),commentToDTO(m.getComment())))
-//        .collect(Collectors.toList());
-//  }
-
-//    private Long id;
-//  private Timestamp timestamp;
-//  //TODO ReactionDTO
-//  private List<Reaction> reaction;
-//  private List<CommentDTO> comment;
-//  private String url;
   public List<MemeResponseDTO> memeToResponseDTO(List<Meme> memeList) {
     return memeList.stream()
-        .map(m -> new MemeResponseDTO(m.getId(),m.getTimestamp(),m.getReaction(),commentToDTO(m.getComment()),m.getUrl()))
+        .map(m -> new MemeResponseDTO(m.getId(), m.getTimestamp(), reactionToDTO(m.getMetaData()),
+            commentToDTO(m.getComment()), m.getUrl()))
         .collect(Collectors.toList());
   }
 
-  public List<CommentDTO> commentToDTO(List<Comment> commentList) {
+  public List<CommentResponseDTO> commentToDTO(List<Comment> commentList) {
     return commentList.stream()
-        .map(c -> new CommentDTO(c.getComment()))
+        .map(c -> new CommentResponseDTO(c.getComment()))
         .collect(Collectors.toList());
   }
 
@@ -89,6 +83,18 @@ public class MemeService {
     } else {
       throw new InvalidMemeIdException(id);
     }
+  }
+
+  public List<ReactionResponseDTO> reactionToDTO(List<Reaction> reactionList) {
+    return reactionList.stream()
+        .map(r -> new ReactionResponseDTO(r.getType(), r.getValue()))
+        .collect(Collectors.toList());
+  }
+
+  public void postReaction(User user, String reaction, Long id, Integer value) throws InvalidMemeIdException, NoSuchReactionException {
+    Meme actualMeme = findMemeById(id);
+    actualMeme.setMetaData(reactionService.increaseReaction(actualMeme.getMetaData(), reaction, value));
+    memeRepository.save(actualMeme);
   }
 
 }
