@@ -12,8 +12,9 @@ function App() {
   return (
     <div className="App">
       {/* <UploadFile /> */}
-      <MemeForm />
+      {/* <MemeForm /> */}
       {/* <MemeCreator /> */}
+      <FormStyled/>
     </div>
   );
 }

@@ -31,6 +31,7 @@ const MemeForm = () => {
           //Elkuldjuk a kérést a backendre
           let requestBody = { caption: captionText, imageUrl: imgURL }
           let endpoint = `${process.env.REACT_APP_PORT}/meme`;
+          console.log(endpoint)
 
           Axios.post(endpoint, requestBody)
             .then(response => {
