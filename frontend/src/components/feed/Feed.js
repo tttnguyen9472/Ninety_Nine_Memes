@@ -8,13 +8,14 @@ const Feed = () => {
 
   const memeList = useSelector(state => state.memeReducer.memeList);
   const errormessage = useSelector(state => state.memeReducer.FeedErrormessage);
+  const feedState = useSelector(state => state.memeReducer.FeedState);
 
   useEffect(() => {
     /*Fetch('GET', '/meme')
       .then(response => {})
       .catch(error => dispatch({ type: 'FEED_ERROR', error: error }));*/
     dispatch({ type: 'FILL_MEME_LIST', memeList: memeList });
-  }, [memeList]);
+  }, [feedState]);
 
   if (errormessage) {
     return <div>{errormessage}</div>;

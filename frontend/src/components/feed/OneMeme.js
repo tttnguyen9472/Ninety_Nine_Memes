@@ -1,27 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import Reaction from './Reaction';
+import { useDispatch, useSelector } from 'react-redux';
 
 function OneMeme(meme) {
-  console.log(meme.metadata);
+  const dispatch = useDispatch();
   return (
     <div id={meme.id}>
-      <img src={meme.img}></img>
-      <br></br>
       <label>{meme.caption}</label>
       <br></br>
-      <label onClick={Reaction(meme, 'funny')}>
+      <img src={meme.img}></img>
+      <br></br>
+      <label onClick={() => Reaction(meme, 'funny', dispatch)}>
         Funny: {meme.metadata.funny}
       </label>
-      <label onClick={Reaction(meme, 'cringe')}>
+      <label onClick={() => Reaction(meme, 'cringe', dispatch)}>
         Cringe: {meme.metadata.cringe}
       </label>
-      <label onClick={Reaction(meme, 'horny')}>
+      <label onClick={() => Reaction(meme, 'horny', dispatch)}>
         Horny: {meme.metadata.horny}
       </label>
 
       {meme.comments.map(comment => (
         <p>{comment}</p>
       ))}
+      <br></br>
     </div>
   );
 }
