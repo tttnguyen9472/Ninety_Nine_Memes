@@ -3,7 +3,6 @@ import Fetch from '../fetch/Fetch';
 
 function Reaction(meme, type, dispatch) {
   console.log(meme.id + ': ' + type);
-  dispatch({ type: 'FEED_STATE_CHANGE' });
   /*Fetch('POST', '/meme/reaction', {
     memeId: meme.id,
     type: type,
