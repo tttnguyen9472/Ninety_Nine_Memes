@@ -8,3 +8,8 @@ img {
   flex: flex-wrap;
   background: lightgray;
 }
+
+.scrollbar {
+  overflow-y: scroll;
+  height: 500px;
+}

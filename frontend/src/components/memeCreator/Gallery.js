@@ -8,6 +8,8 @@ import computerguy from '../../assets/computerguy.jpg';
 import cosmic from '../../assets/cosmic.jpg';
 import headpain from '../../assets/headpain.jpg';
 import meme from '../../assets/meme.jpg';
+import axios from 'axios';
+var ScrollArea = require('react-scrollbar');
 
 const Gallery = () => {
   let activePhoto = useSelector(state => state.memeCreatorReducer.activePhoto);
@@ -17,12 +19,20 @@ const Gallery = () => {
   return (<img  className="photo" src={photo} onClick={() => { console.log(activePhoto);
     return dispatch({type: 'SELECT_ACTIVE_PHOTO', activePhoto: photo})}}></img>)
 }
+  const [templates, setTemplates] = useState([]);
+
+  axios.get('https://api.imgflip.com/get_memes')
+  .then((res) => {setTemplates(res.data.data.memes)});
 
   return (
     <div className="gallery-container">
      <div className="gallery-selectable-photos-wrapper">
      <h3 className="gallery-title">Choose a photo!</h3>
-       {photosArr.map(element => getPhotos(element))}
+       <div className="scrollbar">
+       {templates.map(template => {
+         return <img id={template.id} src={template.url} width="200px" height="auto"></img>
+       })}
+       </div>
      </div>
     </div>
   )
