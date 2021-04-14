@@ -5,11 +5,15 @@ import './App.css';
 import Login from './components/login/FormStyled'
 import UploadFile from './components/memeCreator/UploadFile';
 import FormStyled from './components/login/FormStyled';
+import MemeForm from './components/memeCreator/MemeForm';
+import MemeCreator from './components/memeCreator/MemeCreator';
 
 function App() {
   return (
     <div className="App">
-      <UploadFile />
+      {/* <UploadFile /> */}
+      <MemeForm />
+      {/* <MemeCreator /> */}
     </div>
   );
 }
