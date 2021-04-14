@@ -60,7 +60,7 @@ const FormStyled = () => {
     <div className="login-form-container">
       <div className="flex-wrap">
     <fieldset>
-        <form autoComplete="off" onSubmit={handleSubmit}>
+        <form autoComplete="off" onSubmit={handleSubmit} className="LoginRegisterForm">
             <input type="radio" name="rg" id="sign-in" checked/>
             <input type="radio" name="rg" id="sign-up" />      
 

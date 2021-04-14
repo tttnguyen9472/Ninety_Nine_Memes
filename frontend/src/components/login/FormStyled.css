@@ -5,13 +5,13 @@ $color-input: #fff;
 */
 
 
-input[type="radio"] {
+.LoginRegisterForm input[type="radio"] {
     position: fixed;
     left: -100px;
 }
 
 
-input:not([type="radio"]) {
+.LoginRegisterForm input:not([type="radio"]) {
     appearance: none;
     background-color: #fff;
     display: block;
@@ -37,7 +37,7 @@ input:not([type="radio"]) {
     opacity: 1;
 }
 
-button {
+.LoginRegisterForm button {
     width: 250px;
     height: 40px;
     border-radius: 7px;    
@@ -50,7 +50,7 @@ button::before { font-size: 16px; }
 #sign-up:checked ~ button:before { content: 'Register'; }
 
            
-label {
+.LoginRegisterForm label {
     position: relative;
     display: inline-block;
     text-align: center;
@@ -60,7 +60,7 @@ label {
     transition: 300ms ease;
     width: calc(100% / 3 - 4px);
 }
-label:after {
+.LoginRegisterForm label:after {
   content: '';
   border: 10px solid transparent;
   position: absolute;
