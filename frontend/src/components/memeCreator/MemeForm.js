@@ -8,41 +8,51 @@ const MemeForm = () => {
   let activePhoto = useSelector(state => state.memeCreatorReducer.activePhoto);
   const [error, setError] = useState('');
   const formData = new FormData();
+
   let imgURL = '';
+  let captionText = 'initial';
 
   function uploadImage(file) {
     formData.append('file', file);
     formData.append('upload_preset', 's13e6nbq');
   }
 
-
   function handleSubmit(event) {
     event.preventDefault();
-    let caption = event.target.caption.value || 'No caption';
 
-    Axios.post('https://api.cloudinary.com/v1_1/mertinsmiths/image/upload', formData)
-      .then((response) => {
-        console.log('URL to set: '+ response.data.url)
-        imgURL = response.data.url;
-      })
-      .then(()=> {
-        let requestBody = {caption: caption, imageUrl: imgURL}
+    if (event.target.caption.value && [...formData.entries()].length > 0) {
+      captionText = event.target.caption.value;
 
-        
-        // Axios.post('/login???', requestBody)
-        //   .then(response => {
-        //     setError(response);
-        //   })
-        //   .catch(err => {
-        //     setError(err);
-        //   });
+      Axios.post('https://api.cloudinary.com/v1_1/mertinsmiths/image/upload', formData)
+        .then((response) => {
+          imgURL = response.data.url;
+        })
+        .then(() => {
+          let requestBody = { caption: captionText, imageUrl: imgURL }
+          console.log('Válasz: ', requestBody.caption, requestBody.imageUrl)
 
 
+          // Axios.post('/login???', requestBody)
+          //   .then(response => {
+          //     setError(response);
+          //   })
+          //   .catch(err => {
+          //     setError(err);
+          //   });
 
-        //Then ends here
-      })
-      .catch(err => console.log(err))
 
+
+          //Then ends here
+        })
+        .catch(err => setError(err))
+
+
+
+    } else {
+      setError('Please add a caption and image')
+    }
+
+    //Handle submit ends here
   }
 
   useEffect(() => {
