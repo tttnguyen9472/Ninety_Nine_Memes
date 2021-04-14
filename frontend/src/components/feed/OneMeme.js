@@ -13,15 +13,11 @@ function OneMeme(meme) {
       <br></br>
       <img src={meme.img} alt={meme.caption}></img>
       <br></br>
-      <label onClick={() => Reaction(meme, 'funny', dispatch)}>
-        Funny: {meme.metadata.funny}
-      </label>
-      <label onClick={() => Reaction(meme, 'cringe', dispatch)}>
-        Cringe: {meme.metadata.cringe}
-      </label>
-      <label onClick={() => Reaction(meme, 'horny', dispatch)}>
-        Horny: {meme.metadata.horny}
-      </label>
+      {meme.metadata.map(element => (
+        <button onClick={() => Reaction(meme, element.type, dispatch)}>
+          {element.type}: {element.value}
+        </button>
+      ))}
       <br></br>
       <label onClick={() => SetCommentsClicked(!commentsClicked)}>
         {(commentsClicked && 'Hide Comments') || 'Show Comments'}
