@@ -31,6 +31,11 @@ public abstract class Reaction {
   @ManyToOne(targetEntity = Meme.class)
   @JoinColumn(name = "meme_id")
   private Meme meme;
+  private Integer value;
 
   public abstract String getType();
+
+  public Reaction(Integer value) {
+    this.value = value;
+  }
 }

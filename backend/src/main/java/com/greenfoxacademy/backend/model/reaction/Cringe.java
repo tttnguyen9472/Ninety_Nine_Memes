@@ -12,6 +12,10 @@ public class Cringe extends Reaction{
 
   public Cringe(){super();}
 
+  public Cringe(Integer value) {
+    super(value);
+  }
+
   @Override
   public String getType() {
     return "Cringe";

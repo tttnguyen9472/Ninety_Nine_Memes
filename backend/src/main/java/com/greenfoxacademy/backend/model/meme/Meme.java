@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class Meme {
   private Timestamp timestamp;
   private String caption;
   @OneToMany(mappedBy = "meme", cascade = CascadeType.ALL)
-  private List<Reaction> reaction;
+  private List<Reaction> metaData;
   @OneToMany(mappedBy = "meme", cascade = CascadeType.ALL)
   private List<Comment> comment;
   private String url;
@@ -47,8 +48,13 @@ public class Meme {
   public Meme(String url, String caption, User user) {
     Date date = new Date();
     this.timestamp = new Timestamp(date.getTime());
+    this.metaData = new ArrayList<>();
     this.url = url;
     this.caption = caption;
     this.user =user;
+  }
+
+  public void addReaction(Reaction reaction) {
+    metaData.add(reaction);
   }
 }

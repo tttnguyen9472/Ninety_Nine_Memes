@@ -1,5 +1,4 @@
-package com.greenfoxacademy.backend.model.comment;
-
+package com.greenfoxacademy.backend.model.reaction;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +9,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CommentDTO {
-  private String comment;
+public class ReactionResponseDTO {
+
+  private String type;
+  private Integer value;
 }
