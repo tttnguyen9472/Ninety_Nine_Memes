@@ -1,0 +1,93 @@
+.memeform-container {
+  border-style: none;
+}
+
+.meme-form-container {
+  height: 50vh;
+  align-items: center;
+}
+
+.meme-form-container img{
+  width: 500px;
+  height: auto;
+}
+.meme-form-container form input {
+  height: 50px;
+  width: 100px;
+}
+.meme-form-container input:not([type="radio"]) {
+  height:50px;
+  width: 90%;
+}
+.meme-form-container fieldset form input {
+  margin: auto;
+}
+.meme-form-container div button:before { content: 'Submit'; }
+
+.img-and-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+#uploadPicture {
+  height: 100px;
+  width: 100px;
+}
+
+
+
+.memeFormFrom input[type="radio"] {
+  position: fixed;
+  left: -100px;
+}
+
+.memeFormFrom input:not([type="radio"]) {
+  appearance: none;
+  background-color: #94B8B9;
+  display: block;
+  transition: 300ms ease;
+  border-radius: 7px;
+  border: 0;
+  border-width: 2px;
+  max-height: 0;
+  margin: 0;
+  padding: 0 10px;
+  overflow: hidden;
+  width: 250px;
+  height: 50px;
+  opacity: 0;
+  font-size: 14px;
+  text-align: center;
+  outline: 0;
+}
+
+.memeFormFrom button {
+  width: 170px;
+  height: 40px;
+  border-radius: 30px;  
+  border-color: #3F5C79;  
+  background-color: #3F5C79;
+  font-weight: bold;
+  font-size: 0;
+}
+           
+.memeFormFrom label {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  font-weight: 700;
+  cursor: pointer;
+  color: #94B8B9;
+  transition: 300ms ease;
+  width: calc(100% / 3 - 4px);
+}
+.memeFormFrom label:after {
+  content: '';
+  border: 10px solid transparent;
+  position: absolute;
+  bottom: -10px;
+  left: calc(50% - 10px);
+  transition: inherit;
+}
