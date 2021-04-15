@@ -10,10 +10,10 @@ com/greenfoxacademy/backend/security/FilterChainExceptionHandler.java
  com.greenfoxacademy.backend.security.FilterChainExceptionHandler
 com/greenfoxacademy/backend/security/AuthenticationRequest.java
  com.greenfoxacademy.backend.security.AuthenticationRequest
-com/greenfoxacademy/backend/security/SecurityConfiguration.java
- com.greenfoxacademy.backend.security.SecurityConfiguration
-com/greenfoxacademy/backend/security/JwtRequestFilter.java
- com.greenfoxacademy.backend.security.JwtRequestFilter
+com/greenfoxacademy/backend/controller/MemeController.java
+ com.greenfoxacademy.backend.controller.MemeController
+com/greenfoxacademy/backend/service/UserService.java
+ com.greenfoxacademy.backend.service.UserService
 com/greenfoxacademy/backend/security/ErrorEntityDTO.java
  com.greenfoxacademy.backend.security.ErrorEntityDTO
 com/greenfoxacademy/backend/security/AuthenticationResponse.java
@@ -110,16 +110,16 @@ com/greenfoxacademy/backend/controller/UserController.java
  com.greenfoxacademy.backend.controller.UserController
 com/greenfoxacademy/backend/exception/handler/GlobalExceptionHandler.java
  com.greenfoxacademy.backend.exception.handler.GlobalExceptionHandler
-com/greenfoxacademy/backend/controller/MemeController.java
- com.greenfoxacademy.backend.controller.MemeController
+com/greenfoxacademy/backend/exception/userException/NoSuchUserException.java
+ com.greenfoxacademy.backend.exception.userException.NoSuchUserException
 com/greenfoxacademy/backend/model/meme/MemeDTO.java
  com.greenfoxacademy.backend.model.meme.MemeDTO
 com/greenfoxacademy/backend/exception/reactionException/ReactionException.java
  com.greenfoxacademy.backend.exception.reactionException.ReactionException
-com/greenfoxacademy/backend/exception/userException/NoSuchUserException.java
- com.greenfoxacademy.backend.exception.userException.NoSuchUserException
-com/greenfoxacademy/backend/service/UserService.java
- com.greenfoxacademy.backend.service.UserService
 com/greenfoxacademy/backend/config/CorsConfig.java
  com.greenfoxacademy.backend.config.CorsConfig
  com.greenfoxacademy.backend.config.CorsConfig$1
+com/greenfoxacademy/backend/security/JwtRequestFilter.java
+ com.greenfoxacademy.backend.security.JwtRequestFilter
+com/greenfoxacademy/backend/security/SecurityConfiguration.java
+ com.greenfoxacademy.backend.security.SecurityConfiguration
