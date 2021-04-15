@@ -1,7 +1,7 @@
 com/greenfoxacademy/backend/repository/UserRepository.java
  com.greenfoxacademy.backend.repository.UserRepository
-com/greenfoxacademy/backend/service/UserService.java
- com.greenfoxacademy.backend.service.UserService
+com/greenfoxacademy/backend/model/reaction/Reaction.java
+ com.greenfoxacademy.backend.model.reaction.Reaction
 com/greenfoxacademy/backend/controller/TestController.java
  com.greenfoxacademy.backend.controller.TestController
 com/greenfoxacademy/backend/model/Test.java
@@ -10,8 +10,8 @@ com/greenfoxacademy/backend/security/FilterChainExceptionHandler.java
  com.greenfoxacademy.backend.security.FilterChainExceptionHandler
 com/greenfoxacademy/backend/security/AuthenticationRequest.java
  com.greenfoxacademy.backend.security.AuthenticationRequest
-com/greenfoxacademy/backend/exception/ReservedUsernameException.java
- com.greenfoxacademy.backend.exception.ReservedUsernameException
+com/greenfoxacademy/backend/security/SecurityConfiguration.java
+ com.greenfoxacademy.backend.security.SecurityConfiguration
 com/greenfoxacademy/backend/security/JwtRequestFilter.java
  com.greenfoxacademy.backend.security.JwtRequestFilter
 com/greenfoxacademy/backend/security/ErrorEntityDTO.java
@@ -20,10 +20,10 @@ com/greenfoxacademy/backend/security/AuthenticationResponse.java
  com.greenfoxacademy.backend.security.AuthenticationResponse
 com/greenfoxacademy/backend/security/JwtUtil.java
  com.greenfoxacademy.backend.security.JwtUtil
-com/greenfoxacademy/backend/exception/MissingParameterException.java
- com.greenfoxacademy.backend.exception.MissingParameterException
-com/greenfoxacademy/backend/exception/UserException.java
- com.greenfoxacademy.backend.exception.UserException
+com/greenfoxacademy/backend/model/reaction/Scary.java
+ com.greenfoxacademy.backend.model.reaction.Scary
+com/greenfoxacademy/backend/model/meme/Meme.java
+ com.greenfoxacademy.backend.model.meme.Meme
 com/greenfoxacademy/backend/security/MyUserDetailsService.java
  com.greenfoxacademy.backend.security.MyUserDetailsService
 com/greenfoxacademy/backend/model/user/UserLoginDTO.java
@@ -44,8 +44,8 @@ com/greenfoxacademy/backend/model/user/RegisterRequestDTO.java
  com.greenfoxacademy.backend.model.user.RegisterRequestDTO
 com/greenfoxacademy/backend/service/TestService.java
  com.greenfoxacademy.backend.service.TestService
-com/greenfoxacademy/backend/exception/NoSuchUserException.java
- com.greenfoxacademy.backend.exception.NoSuchUserException
+com/greenfoxacademy/backend/model/reaction/Angry.java
+ com.greenfoxacademy.backend.model.reaction.Angry
 com/greenfoxacademy/backend/exception/handler/TokenExceptionHandler.java
  com.greenfoxacademy.backend.exception.handler.TokenExceptionHandler
 com/greenfoxacademy/backend/model/reaction/Sad.java
@@ -56,34 +56,18 @@ com/greenfoxacademy/backend/model/reaction/Cringe.java
  com.greenfoxacademy.backend.model.reaction.Cringe
 com/greenfoxacademy/backend/model/comment/CommentRequestDTO.java
  com.greenfoxacademy.backend.model.comment.CommentRequestDTO
-com/greenfoxacademy/backend/model/comment/CommentResponseDTO.java
- com.greenfoxacademy.backend.model.comment.CommentResponseDTO
-com/greenfoxacademy/backend/service/ReactionService.java
- com.greenfoxacademy.backend.service.ReactionService
+com/greenfoxacademy/backend/model/reaction/ReactionErrorDTO.java
+ com.greenfoxacademy.backend.model.reaction.ReactionErrorDTO
+com/greenfoxacademy/backend/model/reaction/Funny.java
+ com.greenfoxacademy.backend.model.reaction.Funny
 com/greenfoxacademy/backend/repository/CommentRepository.java
  com.greenfoxacademy.backend.repository.CommentRepository
 com/greenfoxacademy/backend/model/meme/MemeResponseDTO.java
  com.greenfoxacademy.backend.model.meme.MemeResponseDTO
 com/greenfoxacademy/backend/repository/ReactionRepository.java
  com.greenfoxacademy.backend.repository.ReactionRepository
-com/greenfoxacademy/backend/controller/UserController.java
- com.greenfoxacademy.backend.controller.UserController
-com/greenfoxacademy/backend/exception/ReactionException.java
- com.greenfoxacademy.backend.exception.ReactionException
-com/greenfoxacademy/backend/model/meme/MemeErrorDTO.java
- com.greenfoxacademy.backend.model.meme.MemeErrorDTO
-com/greenfoxacademy/backend/model/reaction/ReactionRequestDTO.java
- com.greenfoxacademy.backend.model.reaction.ReactionRequestDTO
-com/greenfoxacademy/backend/exception/InvalidMemeIdException.java
- com.greenfoxacademy.backend.exception.InvalidMemeIdException
-com/greenfoxacademy/backend/model/reaction/ReactionResponseDTO.java
- com.greenfoxacademy.backend.model.reaction.ReactionResponseDTO
-com/greenfoxacademy/backend/exception/NoSuchReactionException.java
- com.greenfoxacademy.backend.exception.NoSuchReactionException
-com/greenfoxacademy/backend/model/reaction/Reaction.java
- com.greenfoxacademy.backend.model.reaction.Reaction
-com/greenfoxacademy/backend/model/reaction/Angry.java
- com.greenfoxacademy.backend.model.reaction.Angry
+com/greenfoxacademy/backend/model/reaction/Horny.java
+ com.greenfoxacademy.backend.model.reaction.Horny
 com/greenfoxacademy/backend/model/reaction/ReactionType.java
  com.greenfoxacademy.backend.model.reaction.ReactionType
  com.greenfoxacademy.backend.model.reaction.ReactionType$1
@@ -92,29 +76,50 @@ com/greenfoxacademy/backend/model/reaction/ReactionType.java
  com.greenfoxacademy.backend.model.reaction.ReactionType$4
  com.greenfoxacademy.backend.model.reaction.ReactionType$5
  com.greenfoxacademy.backend.model.reaction.ReactionType$6
-com/greenfoxacademy/backend/model/reaction/Horny.java
- com.greenfoxacademy.backend.model.reaction.Horny
+com/greenfoxacademy/backend/model/meme/MemeErrorDTO.java
+ com.greenfoxacademy.backend.model.meme.MemeErrorDTO
+com/greenfoxacademy/backend/model/reaction/ReactionRequestDTO.java
+ com.greenfoxacademy.backend.model.reaction.ReactionRequestDTO
+com/greenfoxacademy/backend/model/comment/Comment.java
+ com.greenfoxacademy.backend.model.comment.Comment
+com/greenfoxacademy/backend/model/reaction/ReactionResponseDTO.java
+ com.greenfoxacademy.backend.model.reaction.ReactionResponseDTO
+com/greenfoxacademy/backend/exception/memeException/MissingParameterException.java
+ com.greenfoxacademy.backend.exception.memeException.MissingParameterException
+com/greenfoxacademy/backend/exception/reactionException/InvalidReactionValueException.java
+ com.greenfoxacademy.backend.exception.reactionException.InvalidReactionValueException
+com/greenfoxacademy/backend/exception/userException/UserException.java
+ com.greenfoxacademy.backend.exception.userException.UserException
 com/greenfoxacademy/backend/service/MemeService.java
  com.greenfoxacademy.backend.service.MemeService
-com/greenfoxacademy/backend/model/reaction/Funny.java
- com.greenfoxacademy.backend.model.reaction.Funny
-com/greenfoxacademy/backend/model/reaction/ReactionErrorDTO.java
- com.greenfoxacademy.backend.model.reaction.ReactionErrorDTO
-com/greenfoxacademy/backend/security/SecurityConfiguration.java
- com.greenfoxacademy.backend.security.SecurityConfiguration
-com/greenfoxacademy/backend/model/meme/Meme.java
- com.greenfoxacademy.backend.model.meme.Meme
+com/greenfoxacademy/backend/model/comment/CommentResponseDTO.java
+ com.greenfoxacademy.backend.model.comment.CommentResponseDTO
+com/greenfoxacademy/backend/service/ReactionService.java
+ com.greenfoxacademy.backend.service.ReactionService
 com/greenfoxacademy/backend/service/CommentService.java
  com.greenfoxacademy.backend.service.CommentService
+com/greenfoxacademy/backend/exception/memeException/InvalidMemeIdException.java
+ com.greenfoxacademy.backend.exception.memeException.InvalidMemeIdException
+com/greenfoxacademy/backend/exception/memeException/MemeException.java
+ com.greenfoxacademy.backend.exception.memeException.MemeException
+com/greenfoxacademy/backend/exception/userException/ReservedUsernameException.java
+ com.greenfoxacademy.backend.exception.userException.ReservedUsernameException
+com/greenfoxacademy/backend/exception/reactionException/NoSuchReactionException.java
+ com.greenfoxacademy.backend.exception.reactionException.NoSuchReactionException
+com/greenfoxacademy/backend/controller/UserController.java
+ com.greenfoxacademy.backend.controller.UserController
 com/greenfoxacademy/backend/exception/handler/GlobalExceptionHandler.java
  com.greenfoxacademy.backend.exception.handler.GlobalExceptionHandler
 com/greenfoxacademy/backend/controller/MemeController.java
  com.greenfoxacademy.backend.controller.MemeController
 com/greenfoxacademy/backend/model/meme/MemeDTO.java
  com.greenfoxacademy.backend.model.meme.MemeDTO
-com/greenfoxacademy/backend/exception/MemeException.java
- com.greenfoxacademy.backend.exception.MemeException
-com/greenfoxacademy/backend/model/reaction/Scary.java
- com.greenfoxacademy.backend.model.reaction.Scary
-com/greenfoxacademy/backend/model/comment/Comment.java
- com.greenfoxacademy.backend.model.comment.Comment
+com/greenfoxacademy/backend/exception/reactionException/ReactionException.java
+ com.greenfoxacademy.backend.exception.reactionException.ReactionException
+com/greenfoxacademy/backend/exception/userException/NoSuchUserException.java
+ com.greenfoxacademy.backend.exception.userException.NoSuchUserException
+com/greenfoxacademy/backend/service/UserService.java
+ com.greenfoxacademy.backend.service.UserService
+com/greenfoxacademy/backend/config/CorsConfig.java
+ com.greenfoxacademy.backend.config.CorsConfig
+ com.greenfoxacademy.backend.config.CorsConfig$1

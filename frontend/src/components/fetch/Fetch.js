@@ -32,7 +32,7 @@ async function Fetch(method, endpoint, body) {
   console.log(result);
 
   if (!call.ok) {
-    throw result;
+    throw result.error;
   }
 
   return result;
