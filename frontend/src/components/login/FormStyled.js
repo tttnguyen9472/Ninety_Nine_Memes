@@ -43,29 +43,33 @@ const FormStyled = () => {
       Fetch('POST', '/login', body)
         .then(response => {
           localStorage.setItem('token', response.token);
-          history.push('/login');
-          return dispatch({ type: 'CLEAR_FIELDS' });
+          dispatch({ type: 'CLEAR_FIELDS' });
+          return history.push('/feed');
         })
         .catch(err => {
+          dispatch({ type: 'CLEAR_FIELDS' });
           return dispatch({
-            type: 'LOGIN_BACKEND_ERROR',
+            type: 'BACKEND_ERROR',
             errormessage: err.toString(),
           });
         });
     } else if (submitType === 'register') {
       Fetch('POST', '/register', body)
         .then(response => {
-          history.push('/login');
-          return dispatch({ type: 'CLEAR_FIELDS' });
+          dispatch({ type: 'CLEAR_FIELDS' });
+          return history.push('/login');
         })
         .catch(err => {
+          dispatch({ type: 'CLEAR_FIELDS' });
           return dispatch({
-            type: 'REGISTER_ERROR',
+            type: 'BACKEND_ERROR',
             errormessage: err.toString(),
           });
         });
     }
-  }, [submitType]);
+
+    setSubmitType(false);
+  }, [submitted === true]);
 
   return (
     <div className="login-form-container">
