@@ -13,12 +13,6 @@ function App() {
     <div className="App">
       {/* <UploadFile /> */}
       {/* <MemeForm /> */}
-<<<<<<< HEAD
-      {/* <Gallery /> */}
-      <FormStyled />
-      <MemeCreator />
-=======
->>>>>>> 165e4d393a57068babf6949ac7f15cba45d8d008
       {/* <MemeCreator /> */}
       <FormStyled/>
     </div>

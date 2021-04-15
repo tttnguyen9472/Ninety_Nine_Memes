@@ -28,21 +28,20 @@ const MemeForm = () => {
           imgURL = response.data.url;
         })
         .then(() => {
-          //Elkuldjuk a kérést a backendre
           let requestBody = { caption: captionText, imageUrl: imgURL }
-          let endpoint = `${process.env.REACT_APP_PORT}/meme`;
-          console.log(endpoint)
-
-          Axios.post(endpoint, requestBody)
-            .then(response => {
-              setError('Message sent');
-            })
-            .catch(err => {
-              console.log(err);
-            });
+          console.log('Válasz: ', requestBody.caption, requestBody.imageUrl)
 
 
-          //Elkuldjuk a kérést a backendref
+          // Axios.post('/login???', requestBody)
+          //   .then(response => {
+          //     setError(response);
+          //   })
+          //   .catch(err => {
+          //     setError(err);
+          //   });
+
+
+
           //Then ends here
         })
         .catch(err => setError(err))
@@ -58,9 +57,11 @@ const MemeForm = () => {
       Axios.post('localhost URL!!!!!', requestBody)
            .then(response => {
               console.log(response);
+              //setError
             })
             .catch(err => {
               console.log(err);
+              //setError
             });
     } else {
       setError('Please add a caption and image')
