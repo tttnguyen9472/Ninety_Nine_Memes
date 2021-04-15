@@ -5,7 +5,9 @@ import Comments from './Comments';
 import Popup from './Popup';
 import './Dropdown.css';
 import './OneMeme.css';
-
+import cringe from '../../assets/cringe.png';
+import funny from '../../assets/funny.png';
+import horny from '../../assets/horny.png';
 import { useDispatch, useSelector } from 'react-redux';
 
 function OneMeme(meme) {
@@ -34,6 +36,16 @@ function OneMeme(meme) {
     setIsOpen(!isOpen);
   }
 
+  function getImage(typeIn) {
+    if (typeIn === 'funny') {
+      return funny;
+    } else if (typeIn === 'cringe') {
+      return cringe;
+    } else if (typeIn === 'horny') {
+      return horny;
+    }
+  }
+
   return (
     <div className="one-meme">
       <label className="meme-label">{meme.caption}</label>
@@ -41,8 +53,12 @@ function OneMeme(meme) {
       <img src={meme.img} alt={meme.caption}></img>
       <br></br>
       {meme.metadata.map(element => (
-        <button  className ="onememe-button" onClick={() => togglePopup(element.type, element.value)}>
-          {element.type}: {element.value}
+        <button
+          className="onememe-button"
+          onClick={() => togglePopup(element.type, element.value)}
+        >
+          <img className="reaction-img" src={getImage(element.type)}></img>{' '}
+          {element.value}
         </button>
       ))}
       {isOpen && (
@@ -66,7 +82,10 @@ function OneMeme(meme) {
       )}
       <br></br>
 
-      <label className ="comment-visibality" onClick={() => SetCommentsClicked(!commentsClicked)}>
+      <label
+        className="comment-visibality"
+        onClick={() => SetCommentsClicked(!commentsClicked)}
+      >
         {(commentsClicked && 'Hide Comments') || 'Show Comments'}
       </label>
       {commentsClicked && Comments(meme, dispatch)}

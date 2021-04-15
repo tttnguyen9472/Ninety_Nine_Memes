@@ -18,17 +18,28 @@ p {
 }
 
 .onememe-button {
+  color: lightgray;
+  font-weight: bolder;
+  background-color: #222629;
+  border-style: solid;
+  border-radius: 10px;
   margin: 10px;
   margin-bottom: 25px;
 }
 
 .comment-visibality {
   color: #222629;
-  background-color: #94B8B9;
+  background-color: #94b8b9;
   border-radius: 10px;
   border-style: solid;
   border-color: #222629;
   border-width: 1px;
   padding: 8px;
   margin: 5px;
+}
+
+.reaction-img {
+  background-color: #222629;
+  width: 30px;
+  height: 30px;
 }
