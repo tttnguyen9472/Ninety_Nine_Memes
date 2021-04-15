@@ -13,7 +13,7 @@ import lombok.Setter;
 public class UserLoginDTO {
 
   private String status;
-  private String error;
+  private String message;
   private String token;
 
   public UserLoginDTO(AuthenticationResponse authenticationResponse) {
@@ -21,8 +21,8 @@ public class UserLoginDTO {
     this.token = authenticationResponse.getJwt();
   }
 
-  public UserLoginDTO(String error) {
+  public UserLoginDTO(String message) {
     this.status = "error";
-    this.error = error;
+    this.message = message;
   }
 }

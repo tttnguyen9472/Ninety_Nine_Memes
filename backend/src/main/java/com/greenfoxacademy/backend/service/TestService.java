@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestService {
 
-    public Test hello() {
-        Test test = new Test();
-        test.setMessage("hello");
-        return test;
-    }
+  public Test hello() {
+    Test test = new Test();
+    test.setMessage("hello");
+    return test;
+  }
 
 }
