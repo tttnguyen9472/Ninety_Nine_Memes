@@ -94,3 +94,8 @@ button::before {
   height: 300px;
   text-align: center;
 }
+
+.login-errormessage {
+  color: rgb(216, 83, 83);
+  font-weight: bold;
+}

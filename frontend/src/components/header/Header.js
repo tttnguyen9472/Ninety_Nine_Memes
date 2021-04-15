@@ -6,27 +6,18 @@ import './Header.css';
 function Header() {
   const dispatch = useDispatch();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const kingdomName = useSelector(state => state.userReducer.kingdomName);
 
   const tokenCheck = () => {
     if (localStorage.getItem('token')) {
       setIsLoggedIn(true);
-      return dispatch({
-        type: 'SET_NEW_KINGDOMNAME',
-        kingdomName: kingdomName,
-      });
     } else {
       setIsLoggedIn(false);
-      return dispatch({
-        type: 'SET_NEW_KINGDOMNAME',
-        kingdomName: 'Tribes of Gymnocercus',
-      });
     }
   };
 
   useEffect(() => {
     tokenCheck();
-  }, []);
+  }, [setIsLoggedIn]);
 
   const user = (
     <div className="header-container">
@@ -35,7 +26,7 @@ function Header() {
       </Link>
       <div className="RightButtonsContainer">
         <NavLink
-          to={'/create'}
+          to={'/creator'}
           className="buttonLink"
           activeClassName="selected"
         >
@@ -48,7 +39,7 @@ function Header() {
           className="buttonLink"
           onClick={() => {
             localStorage.removeItem('token');
-            dispatch({ type: 'CLEAR_ALL' });
+            dispatch({ type: 'CLEAR_FIELDS' });
           }}
         >
           <div className="header-button-container">
@@ -62,7 +53,10 @@ function Header() {
   const guest = (
     <div className="header-container">
       <div className="kingdomNameLink">
-        <img className="icon" src="https://t4.ftcdn.net/jpg/03/44/14/45/360_F_344144522_ZwgzA1OvEuZMUjtUgJKi5rVj2bPIGEYg.jpg"></img>
+        <img
+          className="icon"
+          src="https://t4.ftcdn.net/jpg/03/44/14/45/360_F_344144522_ZwgzA1OvEuZMUjtUgJKi5rVj2bPIGEYg.jpg"
+        ></img>
         <h1 className="header-title"></h1>
       </div>
       <div className="RightButtonsContainer">
