@@ -33,8 +33,7 @@ const FormStyled = () => {
     } else if (password.length < 8) {
       return dispatch({ type: 'PASSWORD_UNDER_8_CHARACTERS' });
     }
-
-    setSubmitted(true);
+    setSubmitted(!submitted);
   }
 
   useEffect(() => {
@@ -57,7 +56,10 @@ const FormStyled = () => {
       Fetch('POST', '/register', body)
         .then(response => {
           dispatch({ type: 'CLEAR_FIELDS' });
-          return history.push('/login');
+          return dispatch({
+            type: 'BACKEND_ERROR',
+            errormessage: 'Succesfull Registration',
+          });
         })
         .catch(err => {
           dispatch({ type: 'CLEAR_FIELDS' });
@@ -67,9 +69,7 @@ const FormStyled = () => {
           });
         });
     }
-
-    setSubmitType(false);
-  }, [submitted === true]);
+  }, [submitted]);
 
   return (
     <div className="login-form-container">

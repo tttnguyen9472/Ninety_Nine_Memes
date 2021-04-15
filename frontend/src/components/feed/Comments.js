@@ -25,12 +25,13 @@ function Comments(meme, dispatch) {
         <p>{comment}</p>
       ))}
       <form onSubmit={handleSubmit}>
-        <input
+        <textarea
+          className="feedComment"
           type="text"
           name="comment"
           id="comment"
           placeholder="Write your Comment"
-        ></input>
+        ></textarea>
         <button type="submit"> Send Comment </button>
       </form>
     </div>

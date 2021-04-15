@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Fetch from '../fetch/Fetch';
 import OneMeme from './OneMeme';
 import Popup from './Popup';
+import './Feed.css';
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -17,9 +18,10 @@ const Feed = () => {
 
   useEffect(() => {
     /*Fetch('GET', '/meme')
-      .then(response => {})
+      .then(response => {
+        dispatch({ type: 'FILL_MEME_LIST', memeList: response.meme });
+      })
       .catch(error => dispatch({ type: 'FEED_ERROR', error: error }));*/
-    dispatch({ type: 'FILL_MEME_LIST', memeList: memeList });
   }, [feedState]);
 
   if (errormessage) {
