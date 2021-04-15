@@ -29,7 +29,6 @@ async function Fetch(method, endpoint, body) {
   }
 
   const result = await call.json();
-  console.log(result);
 
   if (!call.ok) {
     throw result.error;
