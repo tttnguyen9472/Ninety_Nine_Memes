@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Fetch from '../fetch/Fetch';
 import { useDispatch, useSelector } from 'react-redux';
+import Fetch from '../fetch/Fetch';
 import OneMeme from './OneMeme';
+import Popup from './Popup';
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -9,6 +10,10 @@ const Feed = () => {
   const memeList = useSelector(state => state.memeReducer.memeList);
   const errormessage = useSelector(state => state.memeReducer.FeedErrormessage);
   const feedState = useSelector(state => state.memeReducer.FeedState);
+  const [isOpen, setIsOpen] = useState(false);
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
 
   useEffect(() => {
     /*Fetch('GET', '/meme')
