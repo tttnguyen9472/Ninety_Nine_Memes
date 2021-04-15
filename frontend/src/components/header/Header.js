@@ -17,7 +17,7 @@ function Header() {
 
   useEffect(() => {
     tokenCheck();
-  }, [setIsLoggedIn]);
+  }, []);
 
   const user = (
     <div className="header-container">
@@ -70,11 +70,23 @@ function Header() {
             <p className="header-button-text">New Meme</p>
           </div>
         </Link>
+        <Link
+          to={'/login'}
+          className="buttonLink"
+          onClick={() => {
+            localStorage.removeItem('token');
+            dispatch({ type: 'CLEAR_FIELDS' });
+          }}
+        >
+          <div className="header-button-container">
+            <p className="header-button-text">{'Logout'}</p>
+          </div>
+        </Link>
       </div>
     </div>
   );
 
-  return isLoggedIn ? user : guest;
+  return user && guest;
 }
 
 export default Header;

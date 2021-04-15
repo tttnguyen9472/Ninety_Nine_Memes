@@ -17,11 +17,11 @@ const Feed = () => {
   };
 
   useEffect(() => {
-    Fetch('GET', '/meme')
+    /*Fetch('GET', '/meme')
       .then(response => {
         dispatch({ type: 'FILL_MEME_LIST', memeList: response.meme });
       })
-      .catch(error => dispatch({ type: 'FEED_ERROR', error: error }));
+      .catch(error => dispatch({ type: 'FEED_ERROR', error: error }));*/
   }, [feedState]);
 
   if (errormessage) {

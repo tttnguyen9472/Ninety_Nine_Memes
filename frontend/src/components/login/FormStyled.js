@@ -34,7 +34,6 @@ const FormStyled = () => {
       return dispatch({ type: 'PASSWORD_UNDER_8_CHARACTERS' });
     }
     setSubmitted(!submitted);
-    console.log(submitted);
   }
 
   useEffect(() => {
