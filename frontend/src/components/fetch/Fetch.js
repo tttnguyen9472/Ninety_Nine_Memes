@@ -3,13 +3,12 @@ async function Fetch(method, endpoint, body) {
     method: method,
     headers: {
       'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
     },
   };
 
   if (localStorage.getItem('token')) {
     settings.headers.token = JSON.stringify(localStorage.getItem('token'));
+    console.log(settings.headers.token);
   }
 
   if (body) {
@@ -29,10 +28,10 @@ async function Fetch(method, endpoint, body) {
   }
 
   const result = await call.json();
-  console.log(result);
+  console.log(call);
 
   if (!call.ok) {
-    throw result;
+    throw result.message;
   }
 
   return result;

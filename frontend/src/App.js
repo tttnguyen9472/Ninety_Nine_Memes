@@ -4,6 +4,7 @@ import './App.css';
 import Login from './components/login/FormStyled';
 import Feed from './components/feed/Feed';
 import MemeCreator from './components/memeCreator/MemeCreator';
+import Header from './components/header/Header'
 
 function App() {
   return (
@@ -14,9 +15,11 @@ function App() {
             <Login />
           </Route>
           <Route path="/feed">
+            <Header />
             <Feed />
           </Route>
           <Route path="/creator">
+            <Header />
             <MemeCreator />
           </Route>
         </Switch>

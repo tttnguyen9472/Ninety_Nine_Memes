@@ -4,7 +4,7 @@ img {
 }
 
 .gallery-container {
-  width: 800px;
+  width: 1000px;
   flex: flex-wrap;
   background-color:  #222629;
   border-radius: 3px;
@@ -17,7 +17,7 @@ img {
 }
 
 .gallery-title {
-  font-size: 30px;
-  color: #94B8B9;
+  font-size: 25px;
+  color:#fffeeb;
   font-weight: bolder;
 }

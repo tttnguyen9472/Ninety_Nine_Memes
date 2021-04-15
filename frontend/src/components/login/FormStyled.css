@@ -95,7 +95,7 @@ button::before {
   text-align: center;
 }
 
-body {
-  background-color: #e9e3e2;
-  font-size: 16px;
+.login-errormessage {
+  color: rgb(216, 83, 83);
+  font-weight: bold;
 }

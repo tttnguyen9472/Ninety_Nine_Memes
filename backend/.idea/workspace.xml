@@ -242,9 +242,9 @@
       <item itemvalue="Gradle.backend [assemble]" />
       <item itemvalue="Gradle.backend" />
       <item itemvalue="Gradle.backend [bootRun]" />
+      <item itemvalue="Gradle.backend [bootJar]" />
       <item itemvalue="Shell Script.gradlew" />
       <item itemvalue="Spring Boot.BackendApplication" />
-      <item itemvalue="Gradle.backend [bootJar]" />
     </list>
     <recent_temporary>
       <list>
