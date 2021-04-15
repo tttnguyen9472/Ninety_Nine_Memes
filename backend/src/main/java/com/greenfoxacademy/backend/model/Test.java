@@ -9,6 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Test {
 
-    private String message;
+  private String message;
 
 }

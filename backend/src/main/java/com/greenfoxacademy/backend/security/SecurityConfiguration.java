@@ -42,11 +42,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     http.csrf().disable()
         .addFilterBefore(filterChainExceptionHandler, UsernamePasswordAuthenticationFilter.class)
         .authorizeRequests()
-        .antMatchers("/login","/register").permitAll()
+        .antMatchers("/login", "/register", "/test").permitAll()
         .anyRequest().authenticated().and()
         .exceptionHandling().and().sessionManagement()
         .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-
+//    http.cors();
     http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
   }
 

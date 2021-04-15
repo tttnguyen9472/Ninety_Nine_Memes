@@ -15,7 +15,7 @@ import java.util.Objects;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class RegisterResponseDTO {
   private String status;
-  private String error;
+  private String message;
   private Long id;
   private String username;
 
@@ -25,8 +25,8 @@ public class RegisterResponseDTO {
     this.username = username;
   }
 
-  public RegisterResponseDTO(String error) {
-    this.error = error;
+  public RegisterResponseDTO(String message) {
+    this.message = message;
     status = "error";
   }
 
