@@ -12,6 +12,10 @@ public class Horny extends Reaction{
 
   public Horny(){super();}
 
+  public Horny(Integer value) {
+    super(value);
+  }
+
   @Override
   public String getType() {
     return "Horny";
