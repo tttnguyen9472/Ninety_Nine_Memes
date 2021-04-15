@@ -16,6 +16,9 @@ function App() {
           <Route path="/feed">
             <Feed />
           </Route>
+          <Route path="/creator">
+            <MemeCreator />
+          </Route>
         </Switch>
       </div>
     </Router>
