@@ -28,20 +28,21 @@ const MemeForm = () => {
           imgURL = response.data.url;
         })
         .then(() => {
+          //Elkuldjuk a kérést a backendre
           let requestBody = { caption: captionText, imageUrl: imgURL }
-          console.log('Válasz: ', requestBody.caption, requestBody.imageUrl)
+          let endpoint = `${process.env.REACT_APP_PORT}/meme`;
+          console.log(endpoint)
+
+          Axios.post(endpoint, requestBody)
+            .then(response => {
+              setError('Message sent');
+            })
+            .catch(err => {
+              console.log(err);
+            });
 
 
-          // Axios.post('/login???', requestBody)
-          //   .then(response => {
-          //     setError(response);
-          //   })
-          //   .catch(err => {
-          //     setError(err);
-          //   });
-
-
-
+          //Elkuldjuk a kérést a backendref
           //Then ends here
         })
         .catch(err => setError(err))
