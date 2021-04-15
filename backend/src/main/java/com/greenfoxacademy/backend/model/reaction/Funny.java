@@ -14,8 +14,4 @@ public class Funny extends Reaction {
     super();
   }
 
-  @Override
-  public String getType() {
-    return "Funny";
-  }
 }

@@ -12,8 +12,4 @@ public class Scary extends Reaction{
 
   public Scary(){super();}
 
-  @Override
-  public String getType() {
-    return "Scary";
-  }
 }

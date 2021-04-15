@@ -32,5 +32,4 @@ public abstract class Reaction {
   @JoinColumn(name = "meme_id")
   private Meme meme;
 
-  public abstract String getType();
 }

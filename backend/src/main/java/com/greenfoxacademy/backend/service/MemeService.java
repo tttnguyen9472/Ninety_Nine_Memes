@@ -55,18 +55,7 @@ public class MemeService {
     }
   }
 
-//  public List<MemeDTO> memeToDTO(List<Meme> memeList) {
-//    return memeList.stream()
-//        .map(m -> new MemeDTO(m.getCaption(), m.getUrl(),commentToDTO(m.getComment())))
-//        .collect(Collectors.toList());
-//  }
 
-//    private Long id;
-//  private Timestamp timestamp;
-//  //TODO ReactionDTO
-//  private List<Reaction> reaction;
-//  private List<CommentDTO> comment;
-//  private String url;
   public List<MemeResponseDTO> memeToResponseDTO(List<Meme> memeList) {
     return memeList.stream()
         .map(m -> new MemeResponseDTO(m.getId(),m.getTimestamp(),m.getReaction(),commentToDTO(m.getComment()),m.getUrl()))

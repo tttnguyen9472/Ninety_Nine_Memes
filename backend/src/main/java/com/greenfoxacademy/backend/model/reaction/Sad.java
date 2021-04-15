@@ -12,8 +12,4 @@ public class Sad extends Reaction{
 
   public Sad(){super();}
 
-  @Override
-  public String getType() {
-    return "Sad";
-  }
 }
