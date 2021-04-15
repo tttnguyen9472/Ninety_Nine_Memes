@@ -43,14 +43,14 @@ public class MemeController {
   }
 
   @GetMapping("/meme")
-  public ResponseEntity<List<MemeResponseDTO>> getMemes(@RequestHeader(value = "Ninety-Nine-Gag-Token") String token)
+  public ResponseEntity<List<MemeResponseDTO>> getMemes(@RequestHeader(value = "token") String token)
       throws UserException {
     return ResponseEntity.ok(memeService.getAllMemes(userService.getUserByToken(token)));
   }
 
   @PostMapping("/meme")
   public ResponseEntity<MemeDTO> postMeme(@RequestBody(required = false) MemeDTO memeDTO,
-                                          @RequestHeader(value = "Ninety-Nine-Gag-Token") String token)
+                                          @RequestHeader(value = "token") String token)
       throws UserException {
     return new ResponseEntity<>(memeService.postMeme(userService.getUserByToken(token), memeDTO),
         HttpStatus.CREATED);
@@ -59,7 +59,7 @@ public class MemeController {
   @PostMapping("/comment")
   public ResponseEntity<CommentResponseDTO> postComment(
       @RequestBody(required = false) CommentRequestDTO commentRequestDTO,
-      @RequestHeader(value = "Ninety-Nine-Gag-Token", required = false)
+      @RequestHeader(value = "token", required = false)
           String token)
       throws UserException, MemeException {
     return new ResponseEntity<>(
@@ -70,7 +70,7 @@ public class MemeController {
 
   @PutMapping("/reaction")
   public ResponseEntity postReaction(@RequestBody ReactionRequestDTO reactionRequestDTO,
-                                     @RequestHeader(value = "Ninety-Nine-Gag-Token", required = false)
+                                     @RequestHeader(value = "token", required = false)
                                          String token)
       throws UserException, MemeException, ReactionException {
     memeService
