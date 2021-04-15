@@ -86,13 +86,13 @@ const MemeForm = () => {
         <fieldset className="memeform-container">
           <form onSubmit={handleSubmit} className="memeFormFrom">
             <div className="img-and-button">
-              <img height="300px" width="auto" src={activePhoto}></img>
+              <img height="200px" width="auto" src={activePhoto}></img>
             <input type="radio" name="rg" id="sign-in" checked />
             <input className="sign-up sign-in reset" name='caption' id='caption' type="text" placeholder="Write your caption here!" />
               <div>
               <button type="submit"></button>
               </div>
-              {error !== '' && <p>{error}</p>}
+              {error !== '' && <p className="error">{error}</p>}
             </div>
           </form>
         </fieldset>

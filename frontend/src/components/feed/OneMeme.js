@@ -4,6 +4,7 @@ import Fetch from '../fetch/Fetch';
 import Comments from './Comments';
 import Popup from './Popup';
 import './Dropdown.css';
+import './OneMeme.css';
 
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -34,13 +35,13 @@ function OneMeme(meme) {
   }
 
   return (
-    <div id={meme.id}>
-      <label>{meme.caption}</label>
+    <div className="one-meme">
+      <label className="meme-label">{meme.caption}</label>
       <br></br>
       <img src={meme.img} alt={meme.caption}></img>
       <br></br>
       {meme.metadata.map(element => (
-        <button onClick={() => togglePopup(element.type, element.value)}>
+        <button  className ="onememe-button" onClick={() => togglePopup(element.type, element.value)}>
           {element.type}: {element.value}
         </button>
       ))}
@@ -65,7 +66,7 @@ function OneMeme(meme) {
       )}
       <br></br>
 
-      <label onClick={() => SetCommentsClicked(!commentsClicked)}>
+      <label className ="comment-visibality" onClick={() => SetCommentsClicked(!commentsClicked)}>
         {(commentsClicked && 'Hide Comments') || 'Show Comments'}
       </label>
       {commentsClicked && Comments(meme, dispatch)}

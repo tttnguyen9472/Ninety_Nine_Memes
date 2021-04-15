@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Fetch from '../fetch/Fetch';
 import OneMeme from './OneMeme';
 import Popup from './Popup';
+import './Feed.css';
 
 const Feed = () => {
   const dispatch = useDispatch();

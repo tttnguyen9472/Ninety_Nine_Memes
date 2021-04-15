@@ -3,7 +3,10 @@
 }
 
 .meme-form-container {
-  height: 50vh;
+  background-color: #222629;
+  margin: 20px;
+  border-radius: 3px;
+  height: auto;
   align-items: center;
 }
 
@@ -35,7 +38,6 @@
   height: 100px;
   width: 100px;
 }
-
 
 
 .memeFormFrom input[type="radio"] {
@@ -90,4 +92,14 @@
   bottom: -10px;
   left: calc(50% - 10px);
   transition: inherit;
+}
+
+.uploadField {
+  margin-top: 20px;
+  height: 20px;
+}
+
+.error {
+  color: rgb(202, 88, 88);
+  font-weight: 100;
 }
