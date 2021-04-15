@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Fetch from '../fetch/Fetch';
 import Axios from 'axios';
 import './MemeForm.css';
-import {useDispatch, useSelector} from "react-redux";
+import { useDispatch, useSelector } from 'react-redux';
 
 const MemeForm = () => {
   let activePhoto = useSelector(state => state.memeCreatorReducer.activePhoto);
@@ -23,14 +23,16 @@ const MemeForm = () => {
     if (event.target.caption.value && [...formData.entries()].length > 0) {
       captionText = event.target.caption.value;
 
-      Axios.post('https://api.cloudinary.com/v1_1/mertinsmiths/image/upload', formData)
-        .then((response) => {
+      Axios.post(
+        'https://api.cloudinary.com/v1_1/mertinsmiths/image/upload',
+        formData
+      )
+        .then(response => {
           imgURL = response.data.url;
         })
         .then(() => {
-          let requestBody = { caption: captionText, imageUrl: imgURL }
-          console.log('Válasz: ', requestBody.caption, requestBody.imageUrl)
-
+          let requestBody = { caption: captionText, imageUrl: imgURL };
+          console.log('Válasz: ', requestBody.caption, requestBody.imageUrl);
 
           // Axios.post('/login???', requestBody)
           //   .then(response => {
@@ -40,31 +42,29 @@ const MemeForm = () => {
           //     setError(err);
           //   });
 
-
-
           //Then ends here
         })
-        .catch(err => setError(err))
-
-
-
-    } else if (event.target.caption.value && [...formData.entries()].length === 0) {
+        .catch(err => setError(err));
+    } else if (
+      event.target.caption.value &&
+      [...formData.entries()].length === 0
+    ) {
       //küldje el a kiválasztott képet és a captiont
       captionText = event.target.caption.value;
       imgURL = activePhoto;
-      let requestBody = { caption: captionText, imageUrl: imgURL }
+      let requestBody = { caption: captionText, imageUrl: imgURL };
 
-      Axios.post('localhost URL!!!!!', requestBody)
-           .then(response => {
-              console.log(response);
-              //setError
-            })
-            .catch(err => {
-              console.log(err);
-              //setError
-            });
+      Axios.post('/meme', requestBody)
+        .then(response => {
+          console.log(response);
+          //setError
+        })
+        .catch(err => {
+          console.log(err);
+          //setError
+        });
     } else {
-      setError('Please add a caption and image')
+      setError('Please add a caption and image');
     }
   }
 
@@ -72,25 +72,34 @@ const MemeForm = () => {
     console.log(activePhoto);
   }, [activePhoto]);
 
-
   return (
     <div className="meme-form-container">
       <div>
-
-        <div className='uploadField'>
-          <input language='eng' type="file" name="file" onChange={(event) => {
-            uploadImage(event.target.files[0])
-          }} />
+        <div className="uploadField">
+          <input
+            language="eng"
+            type="file"
+            name="file"
+            onChange={event => {
+              uploadImage(event.target.files[0]);
+            }}
+          />
         </div>
 
         <fieldset className="memeform-container">
           <form onSubmit={handleSubmit} className="memeFormFrom">
             <div className="img-and-button">
               <img height="200px" width="auto" src={activePhoto}></img>
-            <input type="radio" name="rg" id="sign-in" checked />
-            <input className="sign-up sign-in reset" name='caption' id='caption' type="text" placeholder="Write your caption here!" />
+              <input type="radio" name="rg" id="sign-in" checked />
+              <input
+                className="sign-up sign-in reset"
+                name="caption"
+                id="caption"
+                type="text"
+                placeholder="Write your caption here!"
+              />
               <div>
-              <button type="submit"></button>
+                <button type="submit"></button>
               </div>
               {error !== '' && <p className="error">{error}</p>}
             </div>

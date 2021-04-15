@@ -32,7 +32,10 @@ function Comments(meme, dispatch) {
           id="comment"
           placeholder="Write your Comment"
         ></textarea>
-        <button type="submit"> Send Comment </button>
+        <button className="comment-visibality" type="submit">
+          {' '}
+          Send Comment{' '}
+        </button>
       </form>
     </div>
   );

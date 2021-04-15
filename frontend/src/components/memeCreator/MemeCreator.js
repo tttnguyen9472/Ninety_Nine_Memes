@@ -6,10 +6,9 @@ import Gallery from './Gallery';
 const MemeCreator = () => {
   return (
     <div className="meme-creator-container">
-      <MemeForm/>
-      <Gallery/>
+      <MemeForm />
+      <Gallery />
     </div>
-  )
-
-}
+  );
+};
 export default MemeCreator;
