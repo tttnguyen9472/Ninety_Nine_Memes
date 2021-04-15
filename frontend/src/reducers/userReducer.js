@@ -41,17 +41,6 @@ const userReducer = (state = initialState, action) => {
         ...state,
         errormessage: action.errormessage,
       };
-
-    case 'LOGIN_MISSING_USERNAME_OR_PASSWORD':
-      return {
-        ...state,
-        errormessageLogin: 'Missing username or password!',
-      };
-    case 'LOGIN_BACKEND_ERROR':
-      return {
-        ...state,
-        errormessageLogin: action.errormessage,
-      };
     case 'CLEAR_FIELDS':
       return {
         ...state,
