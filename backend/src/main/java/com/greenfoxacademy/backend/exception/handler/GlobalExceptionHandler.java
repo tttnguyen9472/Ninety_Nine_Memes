@@ -1,10 +1,11 @@
 package com.greenfoxacademy.backend.exception.handler;
 
 
-import com.greenfoxacademy.backend.exception.InvalidMemeIdException;
-import com.greenfoxacademy.backend.exception.MissingParameterException;
-import com.greenfoxacademy.backend.exception.NoSuchReactionException;
-import com.greenfoxacademy.backend.exception.ReservedUsernameException;
+import com.greenfoxacademy.backend.exception.memeException.InvalidMemeIdException;
+import com.greenfoxacademy.backend.exception.reactionException.InvalidReactionValueException;
+import com.greenfoxacademy.backend.exception.memeException.MissingParameterException;
+import com.greenfoxacademy.backend.exception.reactionException.NoSuchReactionException;
+import com.greenfoxacademy.backend.exception.userException.ReservedUsernameException;
 import com.greenfoxacademy.backend.model.meme.MemeErrorDTO;
 import com.greenfoxacademy.backend.model.reaction.ReactionErrorDTO;
 import com.greenfoxacademy.backend.model.user.RegisterResponseDTO;
@@ -53,4 +54,9 @@ public class GlobalExceptionHandler {
         HttpStatus.BAD_REQUEST);
   }
 
+  @ExceptionHandler(InvalidReactionValueException.class)
+  public ResponseEntity<ReactionErrorDTO> invalidReactionValueExceptionHandling(InvalidReactionValueException ex) {
+    return new ResponseEntity<>(new ReactionErrorDTO("You can't react like that bro."),
+        HttpStatus.BAD_REQUEST);
+  }
 }

@@ -1,7 +1,7 @@
 package com.greenfoxacademy.backend.service;
 
-import com.greenfoxacademy.backend.exception.InvalidMemeIdException;
-import com.greenfoxacademy.backend.exception.MissingParameterException;
+import com.greenfoxacademy.backend.exception.memeException.InvalidMemeIdException;
+import com.greenfoxacademy.backend.exception.memeException.MissingParameterException;
 import com.greenfoxacademy.backend.model.comment.Comment;
 import com.greenfoxacademy.backend.model.comment.CommentResponseDTO;
 import com.greenfoxacademy.backend.model.meme.Meme;

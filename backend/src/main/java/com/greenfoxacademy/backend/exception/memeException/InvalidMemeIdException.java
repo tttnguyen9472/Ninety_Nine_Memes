@@ -1,4 +1,5 @@
-package com.greenfoxacademy.backend.exception;
+package com.greenfoxacademy.backend.exception.memeException;
+
 
 public class InvalidMemeIdException extends MemeException {
   private Long memeId;

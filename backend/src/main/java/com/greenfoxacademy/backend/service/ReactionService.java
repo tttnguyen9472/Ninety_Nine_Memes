@@ -1,6 +1,6 @@
 package com.greenfoxacademy.backend.service;
 
-import com.greenfoxacademy.backend.exception.NoSuchReactionException;
+import com.greenfoxacademy.backend.exception.reactionException.NoSuchReactionException;
 import com.greenfoxacademy.backend.model.meme.Meme;
 import com.greenfoxacademy.backend.model.reaction.Reaction;
 import com.greenfoxacademy.backend.model.reaction.ReactionFactory;
