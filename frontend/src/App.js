@@ -14,6 +14,7 @@ function App() {
       {/* <UploadFile /> */}
       {/* <MemeForm /> */}
       {/* <Gallery /> */}
+      <FormStyled />
       <MemeCreator />
       {/* <MemeCreator /> */}
     </div>

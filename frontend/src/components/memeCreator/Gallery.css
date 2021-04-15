@@ -6,10 +6,18 @@ img {
 .gallery-container {
   width: 800px;
   flex: flex-wrap;
-  background: lightgray;
+  background-color:  #222629;
+  border-radius: 3px;
+  margin: 20px;
 }
 
 .scrollbar {
   overflow-y: scroll;
   height: 500px;
+}
+
+.gallery-title {
+  font-size: 30px;
+  color: #94B8B9;
+  font-weight: bolder;
 }

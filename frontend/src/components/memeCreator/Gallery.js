@@ -20,9 +20,10 @@ const Gallery = () => {
     return dispatch({type: 'SELECT_ACTIVE_PHOTO', activePhoto: photo})}}></img>)
 }
   const [templates, setTemplates] = useState([]);
-
-  axios.get('https://api.imgflip.com/get_memes')
+  useEffect(() => {
+    axios.get('https://api.imgflip.com/get_memes')
   .then((res) => {setTemplates(res.data.data.memes)});
+  },[])
 
   return (
     <div className="gallery-container">
@@ -30,7 +31,7 @@ const Gallery = () => {
      <h3 className="gallery-title">Choose a photo!</h3>
        <div className="scrollbar">
        {templates.map(template => {
-         return <img id={template.id} src={template.url} width="200px" height="auto"></img>
+         return <img id={template.id} src={template.url} width="200px" height="auto" onClick={() => {return dispatch({type: 'SELECT_ACTIVE_PHOTO', activePhoto: template.url})}}></img>
        })}
        </div>
      </div>
