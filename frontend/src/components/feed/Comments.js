@@ -11,6 +11,11 @@ function Comments(meme, dispatch) {
     })
       .then(response => dispatch({ type: 'FEED_STATE_CHANGE' }))
       .catch(err => dispatch({ type: 'FEED_ERROR', error: err }));*/
+      event.target.comment.value = '';
+      event.target.comment.placeholder = 'Write your Comment';
+    } else {
+      event.target.comment.placeholder =
+        'Please, write your comment before sending it';
     }
   }
 
